@@ -1,0 +1,88 @@
+http://www.xvideos.com/video2356264/sexy_amateur_blonde_girlfriend_oral
+11metro style win API
+win store app sample    website
+SDQlLite
+
+
+
+
+flicker api gpu
+feeds dataset Api
+
+
+
+9-Soccer Players
+greater vancouver -based amatuer soccer leagues/teams profile/location
+
+Thursday, March 14, 2013
+10:49 AM
+Amateur Canadian Soccer Hierarchy
+
+Entities:
+{1}Association  
+{2}League
+{3}Division
+{4}Team
+{6}player [team Roster]
+
+
+(1)
+First page starts with {1} 
+After clicking each section  will go to the next level [optioanl]
+And list profile/history of each entity   
+
+(2)
+Fetching data feeds from web service and data conversion 
+http://developer.cbssports.com
+
+Reports:
+(3)
+Show standings per team or division
+
+(4)
+Use Bing maps to show top-rated matches location 
+
+
+[features]
+Show  games schedule and location
+HI
+
+
+
+
+
+
+
+SQLList for Windows 8
+http://timheuer.com/blog/archive/2012/08/07/updated-how-to-using-sqlite-from-windows-store-apps.aspx
+
+Saving a Collection of Custom Objects to Local Storage
+http://code.msdn.microsoft.com/windowsapps/CSWinStoreAppSaveCollection-bed5d6e6
+
+Saving User Data to Local App Storage
+http://www.c-sharpcorner.com/UploadFile/99bb20/save-user-data-to-local-application-storage-in-windows-8-app/
+http://jesseliberty.com/2013/02/09/windows-8storing-app-data/
+
+
+Consuming Odata Services
+http://code.msdn.microsoft.com/windowsapps/Consuming-Odata-Service-in-a97758e5
+
+
+List of API's
+http://www.programmableweb.com
+
+
+
+
+
+indewxDB and canvas
+Azure api data
+programmer api
+sqlite
+
+
+kouler.adobe
+http://www.uistencils.com/
+windows 9 UI fundamental
+webcat series on win 8  >>>>  channrel9
+http://en.wikipedia.org/wiki/Vancouver_Metro_Soccer_League
