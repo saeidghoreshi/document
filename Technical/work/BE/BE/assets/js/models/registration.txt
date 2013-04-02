@@ -1,0 +1,8 @@
+
+
+	this is used by teams/grids/registrations.js
+
+   config.fields       = ['team_id','team_name', 'team_calibre','manager_firstname'
+   ,'manager_lastname','registration_date','approved','registration_date_display',
+   'approved_display'];
+           

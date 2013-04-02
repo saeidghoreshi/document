@@ -1,0 +1,90 @@
+HTML, BODY
+{
+	background-image: url(http:///dev.global.playerspectrum.com/spectrum/views/themes/theme0001/images/bgtile.png); 
+	height:100%;
+}
+
+div.stage
+{
+	width:550px;
+	margin-top:150px;
+	margin-bottom:auto;
+	margin-left:auto;
+	margin-right:auto;
+	padding:25px;
+	background-color: #FFFFFF;
+	font-family:Georgia;
+	line-height: 20pt;
+	color:#003366;
+	border-radius:5px;
+	box-shadow: 4px 4px 6px #888;
+	
+}
+
+div.stage h1
+{
+	font-family:Georgia;
+	margin-top:0px;
+}
+
+div.link
+{
+	width:50%;
+	float:left;
+}
+
+div.link a
+{
+	display:block;
+	padding:25px;
+	margin:15px;
+	color:#BBBBBB;
+	text-align: center;
+	font-size:25pt;
+	text-decoration:none;
+	text-shadow: #EEEEEE 1px 1px 1px;
+	border-radius:5px;
+	border:10px solid #CCCCCC;
+}
+
+div#v1 a
+{
+	background-color: #FEEFB3;
+	border-color: #9F6000;
+	color:#9F6000;
+}
+
+div#v2 a
+{
+	background-color: #BDE5F8;
+	border-color:#003366;
+	color:#003366;
+}
+
+div.link a:hover
+{
+	text-shadow: #003366 1px 1px 1px;
+	border-color:#003366;
+}
+
+div.clear
+{
+	clear:both;
+}
+
+p.small
+{
+	font-size:8pt;
+	text-align: center;
+}
+
+p.small a
+{
+	text-decoration: none;
+	color:#333333;
+}
+
+p.small a:hover
+{
+	text-decoration: underline;
+}

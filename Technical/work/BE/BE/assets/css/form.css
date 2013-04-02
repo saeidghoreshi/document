@@ -1,0 +1,60 @@
+div.form-field
+{
+	padding:4px;
+}
+
+div.input
+{
+	padding:2px;
+	background-color:#FFFFFF;
+	border:1px solid #666666;
+}
+
+div.readonly
+{
+	color:#666666;
+	padding:3px;
+}
+
+div.input input,
+div.input select
+{
+	width:100%;
+	border:0px;
+	font-family: "Courier New";
+}
+
+input.caps
+{
+	text-transform: uppercase;
+}
+
+tr.total td
+{
+	border-bottom:3px double #000000;
+	margin-bottom:5px;
+}
+
+.currency
+{
+	text-align: right;
+}
+
+tr
+.initial { background-color: #DDDDDD; color:#000000 }
+.normal { background-color: #CCCCCC }
+.highlight { background-color: #3F4C6B;color:#fff;font-weight: bold;}
+
+div.yui-tt   
+{
+    z-index: 10 !important;  
+}
+div.bd
+{
+    border-color: transparent !important;
+    border-width: 0px !important;
+    padding: 0px 0px !important;
+    z-index: 10!important;  
+}
+
+

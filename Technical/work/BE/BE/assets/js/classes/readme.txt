@@ -1,0 +1,1 @@
+This folder is for classes that extend base extjs classes.

@@ -1,0 +1,107 @@
+html, body
+{
+	height:100%;
+	width:100%;
+	overflow:hidden;
+	margin:0px;
+	padding:0px;
+}
+
+div#endeavor
+{
+	height:100%;
+	background-image: url('../images/background.jpg');
+	background-repeat: no-repeat;
+	background-position: center bottom;
+}
+
+table
+{
+	font-family:Helvetica,Verdana,Arial,sans-serif;
+	font-size:9pt;
+}
+
+table#endeavor
+{
+	width:100%;
+	height:100%;
+}
+
+table#endeavor td#menu
+{
+	height:25px;
+	background-color: #EEEEEE;
+}
+
+table#endeavor td#middle
+{
+	
+}
+
+table#endeavor td#status
+{
+	height:25px;
+	max-height:25px;
+	background-image: url('../images/zig-zag.png');
+	background-repeat: no-repeat;
+	background-position: right top;
+	border-top:1px solid #000000;
+}
+
+table#endeavor td#right
+{
+	width:250px;
+}
+
+div.wrapper
+{
+	height:100%;
+}
+
+div#workspace
+{
+	overflow:hidden;
+}
+
+div#menubar li.yuimenuitem a{ background-position: 2px 2px; background-repeat: no-repeat; }
+/*.yui-skin-sam div#menubar .yuimenuitemlabel { padding: 2px 20px 2px 22px ; }
+.yui-skin-sam div#userbox1 .yuimenuitemlabel { padding: 2px 20px 2px 10px ; }*/
+
+.yui-button.btnNoLabel button
+{
+	text-indent: -4em; 
+    overflow: hidden; 
+    padding: 0 .75em; 
+    width: 2em; 
+    *margin-left: 4em;   /* IE only */ 
+    *padding: 0 1.75em;  /* IE only */ 	
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+div.beta
+{
+	padding:10px;
+	padding-left:140px;
+	background-color:#0173AB;
+	font-family:Verdana;
+	color:#FFFFFF;
+	font-size:10pt;
+	background-image: url(../images/info_icon_image.png);
+	background-repeat: no-repeat;
+	background-position: left center ;
+}
+
+div.beta a,
+div.beta a:hover
+{
+	color:#FFFFFF;
+}
+
+div.beta-ie
+{
+	color:#000000;
+	font-size:14pt;
+	background-color:#FF2B2B;
+	background-image: url(../images/error-icon.png);
+}

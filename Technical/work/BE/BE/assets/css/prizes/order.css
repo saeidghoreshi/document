@@ -1,0 +1,121 @@
+div#prizes-stage
+{
+	margin:-6px;
+	margin-top:0px;
+}
+
+div#prizes-stage .remove-tab-padding
+{
+	margin-left:0px;
+}
+
+div.category
+{
+	float:left;
+	width:33%;
+}
+
+div.prizelist
+{
+	float:left;
+	width:50%;
+}
+
+div.prizelist a,
+div.category a
+{
+	display:block;
+	padding:4px;
+	font-size:10pt;
+	color:#CC0000;
+	font-weight:bold;
+	text-decoration:none;
+}
+
+table.prize
+{
+	width:100%;
+}
+
+table.prize td
+{
+	padding-bottom:4px;
+	margin-bottom:4px;
+}
+
+table.prize td img
+{
+	border:1px solid #CCCCCC;
+}
+
+table.prize td div.title
+{
+	font-weight:bold;
+	font-size:12pt;
+	color:#CC0000;
+	text-align: center;
+	margin-bottom:4px;
+	padding-bottom:4px;
+	border-bottom:1px solid #CCCCCC;
+}
+
+table.prize td div.description
+{
+	
+}
+
+table.prize td div.info
+{
+	color:#666666;
+	font-size:8pt;
+}
+
+div#ctr-prize{ height:230px; padding:4px; }
+div#ctr-prize-category{ padding-left:4px; padding-right:4px; }
+
+tr.yui-dt-selected span.available{ color:#FFFFFF; }
+span.available{ color:#2647A0; font-weight:bold; }
+tr.yui-dt-selected span.unavailable{ color:#666666; }
+span.unavailable{ color:#CCCCCC; }
+
+.yui-dt-col-sku {width: 65px; }
+.yui-dt-col-name {width: 342px; }
+.yui-dt-col-sizestring {width: 175px; } td.yui-dt-col-sizestring div{ color:#CCCCCC; }
+.yui-dt-col-available {width: 80px; }
+.yui-dt-col-from {width: 61px; }
+
+td.yui-dt-col-from div,
+td.yui-dt-col-cur1 div,
+td.yui-dt-col-cur2 div,
+td.yui-dt-col-promo_price div,
+td.yui-dt-col-promo_total div,
+td.yui-dt-col-league_price div,
+td.yui-dt-col-amount div,
+td.yui-dt-col-league_total div
+{ 
+	text-align:right;
+}
+
+.yui-dt-col-qty div,
+.yui-dt-col-promo_qty div,
+.yui-dt-col-league_qty div,
+.yui-dt-col-order div,
+.yui-dt-col-quantity div,
+.yui-dt-col-size div,
+.yui-dt-col-sizestring div,
+.yui-dt-col-available div,
+.yui-dt-col-sku div
+{ 
+	text-align:center;
+}
+
+div#dt-order-summary
+{
+	margin-top:-1px;
+}
+
+div#dt-order-summary tr.yui-dt-last td
+{
+	border-top:3px double #CBCBCB;
+	font-weight:bold;
+}

@@ -1,0 +1,12 @@
+http://www.fluxus.com.ve/gorka/lib_gg_orgchart/  [already uesd]
+http://mbostock.github.com/protovis/ex/
+
+[good library]
+http://ui.ajax.org/#demos/elements.rpc
+
+http://jsplumb.org/mootools/demo.html
+http://raphaeljs.com/
+http://mindfusion.eu/demos/jsdiagram/DomTree.html
+http://philogb.github.com/jit/static/v20/Jit/Examples/Spacetree/example1.html
+
+http://tympanus.net/Tutorials/FancySlidingForm/

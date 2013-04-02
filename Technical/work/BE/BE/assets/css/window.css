@@ -1,0 +1,230 @@
+div.inner
+{
+	padding:4px;
+}
+
+div.btnset
+{
+	text-align:right;
+}
+
+div.btnset div.btn
+{
+	display:inline-block;
+	font-size:12px;
+	min-height:1.9em !important;
+}
+
+div.btnset div.seperator
+{
+	display:inline-block;
+	height:15px;
+	background-color:#808080;
+	padding:0px;
+	width:1px;
+}
+
+h1
+{
+	color:#CC0000;
+	margin:0px;
+	font-size:14pt;
+}
+
+
+h2
+{
+	color:#000000;
+	margin:0px;
+	margin-top:10px;
+	font-size:14pt;
+}
+
+/*.yui-skin-sam .yui-panel .ft
+{
+	font-size:100% !important;
+}*/
+
+/*.yui-skin-sam .yui-panel .bd
+{
+	padding: 0px 0px 0px 0px ;
+	overflow:hidden;
+}*/
+
+ul.yui-nav li:first-child
+{
+	margin-left:10px !important;
+}
+
+div.yui-content
+{
+	border-style:none !important;
+	background:none !important;
+}
+
+.hidden
+{
+	display:none !important;
+}
+
+div.datatable table
+{
+	width:100%;
+}
+
+div.yuimenu
+{
+	z-index:100000 !important;
+}
+
+div.remove-tab-padding
+{
+	margin-left:-6px;
+	margin-top:-3px;
+}
+
+div.window-loading
+{
+	width:200px;
+	height:40px;
+	overflow:hidden;
+	text-align:center;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+span.window-loading-item
+{
+	text-transform: capitalize;
+}
+
+div.ctr-window-loading-bar
+{
+	border:1px solid #EEEEEE;
+	padding:1px;
+	height:20px;
+	background-color: #000000;
+	position:relative;
+}
+
+div.window-loading-bar
+{
+	text-align:center;
+	background-color:#006600;
+	height:100%;
+	width:0px;
+}
+
+div.window-loading-report
+{
+	position:absolute;
+	width:100%;
+	height:40px;
+	left:0px;
+	top:0px;
+	text-align:center;
+	z-index:5;
+	padding-top:2px;
+	color:#FFFFFF;
+}
+
+div#mainLoader
+{
+	color:#FFFFFF;
+	position:relative;
+	top:50%;
+	margin-top: -75px;
+	z-index:4000;
+	width:233px;
+	height:150px;
+}
+
+div.action-report
+{
+	height:0px;
+	overflow:hidden;
+	background-color:#CCCCFF;
+	margin-left:-6px;
+	margin-right:-6px;
+	margin-top:-3px;
+	background-image: url(../images/stripes.png);
+}
+
+div.action-report span.content
+{
+	background-image: url(../images/shadow.png);
+	background-position: top;
+	background-repeat: repeat-x;
+	display:block;
+	padding:10px;
+}
+
+td.padwrap
+{
+	padding:5px;
+}
+
+ul.checklist li
+{
+	list-style-image: url('http://endeavor.servilliansolutionsinc.com/global_assets/silk/tick.png');
+}
+
+div.window div.yui-navset
+{
+	margin-top:5px;
+}
+
+div.window div.yui-navset li.disabled a
+{
+	color:#666666 !important;
+}
+
+div.breadcrumbs
+{
+	background-color:#FFFFFF;
+	border-bottom:1px solid #2647A0;
+	margin:0px;
+	margin-top:-4px;
+	margin-bottom:0px;
+	padding:4px;
+}
+
+div.breadcrumbs a
+{
+	text-decoration:none;
+	color:#2647A0;
+	font-weight:bold;
+}
+
+div.left
+{
+	float:left;
+
+}
+
+div.warning
+{
+	background-color:#FFCCCC;
+	border:1px solid #CC0000;
+	padding:4px;
+}
+
+div#tab-scheduler
+{
+	float:right;
+	margin-left:169px;
+	width:588px;
+}
+
+div.yui-menu-body-scrolled[style]
+{
+	height:150px !important;
+}
+div.yui-menu-body-scrolled[style]
+{
+    height:100px !important;
+}                                    
+/*
+yui-skin-sam .yuimenu .bottomscrollbar {
+    border: 0px solid #808080 ;
+}*/

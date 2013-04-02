@@ -1,0 +1,72 @@
+div.panelItem
+{
+	margin-bottom:		5px;
+	padding:			1px;
+	border-radius: 		2px 2px 2px 2px;
+	border-color: 		#B7C8D7;
+	border-style: 		solid; 
+	border-width: 		1px; 
+	line-height: 		14px;
+}
+
+div.panelItem div.label
+{
+	background-color: 	#C2D8F0;
+	color: 				#3E6AAA; 
+	font: 				11px tahoma,arial,verdana,sans-serif;
+	padding:			3px;
+	font-weight:		bold;
+}
+
+
+/* IMPORTANT changed class 'item' to 'pitem' */
+div.panelItem div.pitem,
+div.panelItem table
+{
+	background-color:	#D0DEF0;
+	padding:			5px;
+	font-size: 			11px;
+	font-family: 		tahoma,arial,verdana,sans-serif;
+}
+
+div.panelItem table
+{
+	padding: 			0px;
+	width:				100%;
+}
+
+div.panelItem table td
+{
+	border-top: 		1px solid #B7C8D7;
+	padding:			1px;
+}
+
+
+div.panelItem table#available-funds td{ text-align: right; }
+div.panelItem table#available-funds td:first-child{ text-align: left; }
+
+div.panelItem table tr:first-child td
+{
+	border-top:			none;
+}
+
+div#floatingad
+{
+	position: 			absolute;
+	right:				13px;
+	bottom:				13px;
+	z-index:			10000000;
+}
+
+div#floatinglinks
+{
+	position: 			absolute;
+	left:				13px;
+	top:				134px;
+	z-index:			18000;
+}
+
+table#facebook td:first-child
+{
+	width:				40px;
+}

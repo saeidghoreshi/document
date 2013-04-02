@@ -1,0 +1,94 @@
+body
+{
+	background-color: #EEEEEE;
+}
+
+table
+{
+	font-family: 'Arial', 'sans-serif';
+	font-size:10pt;
+}
+
+table.main
+{
+	width:100%;
+	height:100%;
+	background-color: #EEEEEE;
+}
+
+table.container
+{
+	width:600px;
+	border:1px solid #115278;
+	background-color: #FFFFFF;
+}
+
+/************************* LEGAL **********************/
+table.legal
+{
+	width:600px;
+	font-size:8pt;
+	color:#666666;
+}
+
+table.legal td
+{
+	padding:5px;
+}
+
+/************************* HEADER **********************/
+td#logo{ padding-left:5px; }
+tr.tmpl td{ height:5px; }
+table.header td{ text-align: center; font-weight: bold; }
+td.hdr_spacer{ height:25px; }
+td#hdr_title{ background-color: #DDDDDD; height:20px; font-size:10pt; color: #115278; }
+td#hdr_email{ background-color: #115278; height:40px; }
+td#hdr_phone{ background-color: #51C3DD; height:25px; font-size:12pt; color: #115278; }
+
+td#hdr_email a, td#hdr_email a span,
+td#hdr_email a:active, td#hdr_email a:active span,
+td#hdr_email a:visited, td#hdr_email a:visited span
+{
+	color: #FFFFFF;
+	font-size: 16pt;
+	font-weight: normal;
+	text-decoration: none;
+}
+
+td#hdr_email a:hover, td#hdr_email a:hover span
+{
+	text-decoration: underline;
+}
+
+td.subject
+{
+	background-color: #115278;
+	color: #FFFFFF;
+	font-size: 16pt;
+	text-align: center;
+	padding:5px;
+}
+
+/************************* CONTENT **********************/
+
+/************************* RECEIPT **********************/
+
+table.receipt,
+table.recipient
+{
+	width:100%;
+	font-size:10pt;
+}
+
+table.recipient
+{
+	height:100%;
+}
+
+table.receipt td{ border:1px solid #CCCCCC; }
+table.receipt th{ background-color: #CCCCCC; }
+
+p
+{
+	margin:5px;
+}

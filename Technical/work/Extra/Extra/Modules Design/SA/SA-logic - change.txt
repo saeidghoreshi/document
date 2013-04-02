@@ -1,0 +1,19 @@
+first time , new person will be added to new organization no matter of role
+1-will be assigned to role(SA)
+2-auto create new motion_rule (RVSP) and make vote to register this vote
+
+
+
+
+rules :
+get last last matching rule based per ruletype/org
+filering only put filter on motion_status
+
+assignment :
+get last last matching assignment based per motion_assignment/org
+filering only put filter on motion_status
+
+
+
+
+building filters over 4 grtids

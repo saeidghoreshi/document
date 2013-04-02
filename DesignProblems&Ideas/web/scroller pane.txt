@@ -1,0 +1,40 @@
+<!--scroller pane-->
+    <link href="../../ClientSideLibraries/plugins/jScrollPane/jquery.jscrollpane.css"rel="stylesheet" type="text/css" />
+    <script src="../../ClientSideLibraries/plugins/jScrollPane/jquery.mousewheel.js"type="text/javascript"></script>
+    <script src="../../ClientSideLibraries/plugins/jScrollPane/jquery.jscrollpane.min.js"type="text/javascript"></script>
+<script>
+
+    (function ($) {
+        
+        //scroller Pane
+        $('#scroll-pane').ready(function () {
+            $('#scroll-pane').jScrollPane();
+        });
+
+    } (jQuery));
+
+</script>
+
+<style>
+#scrollerContainer
+{
+    margin-right: 2px;
+}
+#scroll-pane
+{
+	width: 100%;
+	height: 550px;
+	overflow: auto;
+}			
+</style>
+
+
+<div id='listingPanel'>
+<div id='scrollerContainer' style="width:230px;">
+    <div id="scroll-pane">
+
+    
+
+</div>
+</div>
+</div>

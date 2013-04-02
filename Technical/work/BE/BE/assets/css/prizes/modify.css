@@ -1,0 +1,77 @@
+div#selected_prize_sku
+{
+	position:absolute;
+	right:5px;
+	top:35px;
+	font-size:16px;
+	color:#CC0000;
+}
+
+td.yui-dt-col-size_qty,
+td.yui-dt-col-size_insert,
+td.yui-dt-col-is_active
+{
+	width:40px;
+	text-align:center !important;
+}
+
+td.yui-dt-col-size_qty input,
+td.yui-dt-col-size_insert input
+{
+	width:100%;
+	text-align:center;
+	border:none;
+	background:none;
+	font-size:inherit;
+}
+
+td.yui-dt-col-cur1,
+td.yui-dt-col-cur2
+{
+	width:60px;
+	text-align:right !important;
+}
+
+td.yui-dt-col-size_abbr
+{
+	width:60px;
+	text-align:center !important;
+}
+
+.yui-dt-selected input
+{
+	color:#FFFFFF;
+}
+
+
+/* ****************************************
+*****************  UPLOAD *****************
+**************************************** */
+
+.uploadButton a, .clearButton a {
+	display:block;
+	width:100px;
+	height:40px;
+	text-decoration: none;
+	margin-left:5px;
+}
+
+.uploadButton a {
+	background: url("/assets/images/uploadFileButton.png") 0 0 no-repeat;
+}
+
+.clearButton a {
+	background: url("/assets/images/clearListButton.png") 0 0 no-repeat;
+}
+
+.uploadButton a:visited, .clearButton a:visited {
+	background-position: 0 0;
+}
+
+.uploadButton a:hover, .clearButton a:hover {	
+	background-position: 0 -40px;
+}
+
+.uploadButton a:active, .clearButton a:active {
+	background-position: 0 -80px;
+}

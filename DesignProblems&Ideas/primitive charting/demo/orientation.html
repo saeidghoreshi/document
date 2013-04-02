@@ -1,0 +1,369 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>jQuery Widget Organizational Chart Orientation Demo</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="text/javascript" src="demo/js/jquery/jquery-1.7.2.js"></script>
+	<script type="text/javascript" src="demo/js/jquery/jquery-ui-1.8.16.custom.min.js"></script>
+	<link href="demo/js/jquery/ui-lightness/jquery-ui-1.8.16.custom.css" media="screen" rel="stylesheet" type="text/css" />
+
+	<!-- jQuery UI Layout -->
+	<script type="text/javascript" src="demo/jquerylayout/jquery.layout-latest.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="demo/jquerylayout/layout-default-latest.css" />
+
+	<!-- CSS Drop Down Menu -->
+	<link href="demo/css/dropdown/dropdown.css" media="screen" rel="stylesheet" type="text/css" />
+	<link href="demo/css/dropdown/themes/default/default.ultimate.css" media="screen" rel="stylesheet" type="text/css" />
+
+	<script type="text/javascript">
+		jQuery(document).ready(function () {
+			jQuery('body').layout(
+			{
+				center__paneSelector: "#contentpanel"
+				, north__paneSelector: "#northpanel"
+				, north__resizable: false
+				, north__closable: false
+				, north__spacing_open: 0
+				, north__size: 40
+			});
+		});
+	</script>
+
+	<!-- header -->
+
+
+	<!-- # include file="src/src.primitives.html"-->
+
+	<link href="demo/css/primitives.latest.css?1029" media="screen" rel="stylesheet" type="text/css" />
+	<script  type="text/javascript" src="demo/js/primitives.min.js?1029"></script>
+
+	<script type="text/javascript" src="demo/js/demodatasmall.js"></script>
+
+	<script type="text/javascript">
+		var orgDiagram = null;
+		var treeItems = {};
+		var contextidcounter = 0;
+		var currentHighlightDataTreeItem = null;
+		var currentCursorDataTreeItem = null;
+
+		jQuery(document).ready(function () {
+			jQuery.ajaxSetup({
+				cache: false
+			});
+
+			jQuery('#contentpanel').layout(
+			{
+				center__paneSelector: "#centerpanel"
+				, south__paneSelector: "#southpanel"
+				, south__resizable: false
+				, south__closable: false
+				, south__spacing_open: 0
+				, south__size: 50
+				, west__size: 200
+				, west__paneSelector: "#westpanel"
+				, west__resizable: true
+				, center__onresize: function () {
+					if (orgDiagram != null) {
+						jQuery("#centerpanel").orgDiagram("update", primitives.orgdiagram.UpdateMode.Refresh);
+					}
+				}
+			});
+
+			/* Page Fit Mode */
+			var pageFitModes = jQuery("#pageFitMode");
+			for (var key in primitives.orgdiagram.PageFitMode) {
+				var value = primitives.orgdiagram.PageFitMode[key];
+				pageFitModes.append(jQuery("<br/><label><input name='pageFitMode' type='radio' value='" + value + "' " + (value == primitives.orgdiagram.PageFitMode.None ? "checked" : "") + " />" + key + "</label>"));
+			};
+
+			jQuery("input:radio[name=pageFitMode]").change(function () {
+				Update(jQuery("#centerpanel"), primitives.orgdiagram.UpdateMode.Refresh);
+			});
+			
+		    /* Orientation Type */
+			var orientationTypes = jQuery("#orientationType");
+			for (var key in primitives.orgdiagram.OrientationType) {
+			    var value = primitives.orgdiagram.OrientationType[key];
+			    orientationTypes.append(jQuery("<br/><label><input name='orientationType' type='radio' value='" + value + "' " + (value == primitives.orgdiagram.OrientationType.Left ? "checked" : "") + " />" + key + "</label>"));
+			};
+
+			jQuery("input:radio[name=orientationType]").change(function () {
+			    Update(jQuery("#centerpanel"), primitives.orgdiagram.UpdateMode.Refresh);
+			});
+
+			/* Vertical Alignmnet */
+			var verticalAlignments = jQuery("#verticalAlignment");
+			for (var key in primitives.common.VerticalAlignmentType) {
+				var value = primitives.common.VerticalAlignmentType[key];
+				verticalAlignments.append(jQuery("<br/><label><input name='verticalAlignment' type='radio' value='" + value + "' " + (value == primitives.common.VerticalAlignmentType.Middle ? "checked" : "") + " />" + key + "</label>"));
+			};
+
+			jQuery("input:radio[name=verticalAlignment]").change(function () {
+				Update(jQuery("#centerpanel"), primitives.orgdiagram.UpdateMode.Refresh);
+			});
+
+            /* Horizontal Alignmnet */
+			var horizontalAlignments = jQuery("#horizontalAlignment");
+			for (var key in primitives.common.HorizontalAlignmentType) {
+				var value = primitives.common.HorizontalAlignmentType[key];
+				horizontalAlignments.append(jQuery("<br/><label><input name='horizontalAlignment' type='radio' value='" + value + "' " + (value == primitives.common.HorizontalAlignmentType.Left ? "checked" : "") + " />" + key + "</label>"));
+			};
+
+			jQuery("input:radio[name=horizontalAlignment]").change(function () {
+				Update(jQuery("#centerpanel"), primitives.orgdiagram.UpdateMode.Refresh);
+			});
+
+			/* Connector Type */
+			var connectorTypes = jQuery("#connectorType");
+			for (var key in primitives.orgdiagram.ConnectorType) {
+				var value = primitives.orgdiagram.ConnectorType[key];
+				connectorTypes.append(jQuery("<br/><label><input name='connectorType' type='radio' value='" + value + "' " + (value == primitives.orgdiagram.ConnectorType.Squared ? "checked" : "") + " />" + key + "</label>"));
+			};
+
+			jQuery("input:radio[name=connectorType]").change(function () {
+				Update(jQuery("#centerpanel"), primitives.orgdiagram.UpdateMode.Refresh);
+			});
+
+			/* Minimal Visibility */
+			var pageFitModes = jQuery("#minimalVisibility");
+			for (var key in primitives.orgdiagram.Visibility) {
+				var value = primitives.orgdiagram.Visibility[key];
+				pageFitModes.append(jQuery("<br/><label><input name='minimalVisibility' type='radio' value='" + value + "' " + (value == primitives.orgdiagram.Visibility.Dot ? "checked" : "") + " />" + key + "</label>"));
+			};
+
+			jQuery("input:radio[name=minimalVisibility]").change(function () {
+				Update(jQuery("#centerpanel"), primitives.orgdiagram.UpdateMode.Refresh);
+			});
+
+			/* Selection Path Mode */
+			var selectionPathModes = jQuery("#selectionPathMode");
+			for (var key in primitives.orgdiagram.SelectionPathMode) {
+				var value = primitives.orgdiagram.SelectionPathMode[key];
+				selectionPathModes.append(jQuery("<br/><label><input name='selectionPathMode' type='radio' value='" + value + "' " + (value == primitives.orgdiagram.SelectionPathMode.FullStack ? "checked" : "") + " />" + key + "</label>"));
+			};
+
+			jQuery("input:radio[name=selectionPathMode]").change(function () {
+				Update(jQuery("#centerpanel"), primitives.orgdiagram.UpdateMode.Refresh);
+			});
+
+			/* Leaves Placement Type */
+			var leavesPlacementType = jQuery("#leavesPlacementType");
+			for (var key in primitives.orgdiagram.ChildrenPlacementType) {
+				var value = primitives.orgdiagram.ChildrenPlacementType[key];
+				leavesPlacementType.append(jQuery("<br/><label><input name='leavesPlacementType' type='radio' value='" + value + "' " + (value == primitives.orgdiagram.ChildrenPlacementType.Horizontal ? "checked" : "") + " />" + key + "</label>"));
+			};
+
+			jQuery("input:radio[name=leavesPlacementType]").change(function () {
+				Update(jQuery("#centerpanel"), primitives.orgdiagram.UpdateMode.Refresh);
+			});
+
+			/* Graphics Type */
+			var graphicsType = jQuery("#graphicsType");
+			for (var key in primitives.common.GraphicsType) {
+				var value = primitives.common.GraphicsType[key];
+				graphicsType.append(jQuery("<br/><label><input name='graphicsType' type='radio' value='" + value + "' " + (value == primitives.common.GraphicsType.SVG ? "checked" : "") + " />" + key + "</label>"));
+			};
+
+			jQuery("input:radio[name=graphicsType]").change(function () {
+				Update(jQuery("#centerpanel"), primitives.orgdiagram.UpdateMode.Recreate);
+			});
+
+			/* Setup & Run */
+			Setup(jQuery("#centerpanel"));
+
+			LoadItems(jQuery("#centerpanel"));
+
+		});
+
+		function Setup(selector) {
+			orgDiagram = selector.orgDiagram(GetOrgDiagramConfig());
+
+			ShowGraphicsType(selector.orgDiagram("option", "actualGraphicsType"));
+		}
+
+		function Update(selector, updateMode) {
+			selector.orgDiagram("option", GetOrgDiagramConfig());
+			selector.orgDiagram("update", updateMode);
+
+			ShowGraphicsType(selector.orgDiagram("option", "actualGraphicsType"));
+		}
+
+		function GetOrgDiagramConfig() {
+			var graphicsType = parseInt(jQuery("input:radio[name=graphicsType]:checked").val(), 10);
+			var pageFitMode = parseInt(jQuery("input:radio[name=pageFitMode]:checked").val(), 10);
+			var orientationType = parseInt(jQuery("input:radio[name=orientationType]:checked").val(), 10);
+			var minimalVisibility = parseInt(jQuery("input:radio[name=minimalVisibility]:checked").val(), 10);
+			var selectionPathMode = parseInt(jQuery("input:radio[name=selectionPathMode]:checked").val(), 10);
+			var leavesPlacementType = parseInt(jQuery("input:radio[name=leavesPlacementType]:checked").val(), 10);
+			var verticalAlignment = parseInt(jQuery("input:radio[name=verticalAlignment]:checked").val(), 10);
+			var horizontalAlignment = parseInt(jQuery("input:radio[name=horizontalAlignment]:checked").val(), 10);
+			var connectorType = parseInt(jQuery("input:radio[name=connectorType]:checked").val(), 10);
+
+			var templates = [getContactTemplate()];
+
+			return {
+				graphicsType: graphicsType,
+				pageFitMode: pageFitMode,
+				orientationType: orientationType,
+				verticalAlignment: verticalAlignment,
+				horizontalAlignment: horizontalAlignment,
+				connectorType: connectorType,
+				minimalVisibility: minimalVisibility,
+				hasSelectorCheckbox: primitives.common.Enabled.False,
+				selectionPathMode: selectionPathMode,
+				leavesPlacementType: leavesPlacementType,
+				templates: templates,
+				onItemRender: onTemplateRender,
+    			onSelectionChanged: onSelectionChanged
+			};
+		}
+
+		function getContactTemplate() {
+		    var result = new primitives.orgdiagram.TemplateConfig();
+		    result.name = "contactTemplate";
+
+		    result.itemSize = new primitives.common.Size(160, 30);
+		    result.minimizedItemSize = new primitives.common.Size(3, 3);
+		    result.highlightPadding = new primitives.common.Thickness(2, 2, 2, 2);
+
+
+		    var itemTemplate = jQuery(
+			  '<div class="bp-item bp-nopadding bp-corner-all bt-item-frame">'
+                + '<div style="left: 4px; top: 4px; width: 152px; height: 20px;" class="bp-item bp-selectioncheckbox-frame"><nobr><input class="bp-selectioncheckbox" name="checkbox" value="on" type="checkbox">&nbsp;<span name="title" class="bp-selectiontext">Selected</span></nobr></div>'
+			+ '</div>'
+			).css({
+			    width: result.itemSize.width + "px",
+			    height: result.itemSize.height + "px"
+			});
+		    result.itemTemplate = itemTemplate.wrap('<div>').parent().html();
+
+		    return result;
+		}
+
+		function onTemplateRender(event, data) {
+		    var element = data.element.find("[name=title]");
+		    if (element.text() != data.context["title"]) {
+		        element.text(data.context["title"]);
+		    }
+
+		    var checkBox = data.element.find("[name=checkbox]");
+		    if (data.isSelected) {
+		        checkBox.attr("checked", "checked");
+		    }
+		    else {
+		        checkBox.removeAttr("checked");
+		    }
+		}
+
+		function onSelectionChanged(e, data) {
+			var selectedItems = jQuery("#centerpanel").orgDiagram("option", "selectedItems");
+			var message = "";
+			for (var index = 0; index < selectedItems.length; index += 1) {
+				var itemConfig = selectedItems[index];
+				if (message != "") {
+					message += ", ";
+				}
+				message += "<b>'" + itemConfig.title + "'</b>";
+			}
+			message += (data.parentItem != null ? " Parent item <b>'" + data.parentItem.title + "'" : "");
+			jQuery("#southpanel").empty().append("User selected next items: " + message);
+		}
+
+		function LoadItems(selector) {
+
+		    var rootItem = getTreeItem(data, 3, primitives.orgdiagram.ItemType.Regular);
+
+			selector.orgDiagram("option", {
+				rootItem: rootItem,
+				cursorItem: rootItem
+			});
+			selector.orgDiagram("update");
+		}
+
+		var invisibleItems = ["James Holt", "John Green"];
+
+		function getTreeItem(sourceItem, depth, itemType) {
+			var result = new primitives.orgdiagram.ItemConfig();
+			result.title = sourceItem.title;
+			result.description = sourceItem.description;
+			result.phone = sourceItem.phone;
+			result.email = sourceItem.email;
+			result.image = "demo/images/photos/" + sourceItem.image;
+			result.templateName = "contactTemplate";
+			if (primitives.common.indexOf(invisibleItems, result.title) >= 0) {
+			    result.isVisible = false;
+			} else {
+			    result.itemType = itemType;
+			}
+			if (sourceItem.itemTitleColor != null) {
+				result.itemTitleColor = sourceItem.itemTitleColor;
+			}
+			if (depth > 0 && sourceItem.items != null) {
+			    for (var index = 0; index < sourceItem.items.length; index += 1) {
+
+			        result.items.push(getTreeItem(sourceItem.items[index], depth - 1, result.itemType));
+				}
+			}
+			return result;
+		}
+
+		function ShowGraphicsType(graphicsType) {
+			var result = null;
+
+			switch (graphicsType) {
+				case primitives.common.GraphicsType.SVG:
+					result = "SVG";
+					break;
+				case primitives.common.GraphicsType.Canvas:
+					result = "Canvas";
+					break;
+				case primitives.common.GraphicsType.VML:
+					result = "VML";
+					break;
+			}
+			jQuery("#actualGraphicsType").empty().append("Graphics Type: " + result);
+		}
+
+	</script>
+	<!-- /header -->
+</head>
+<body style="font-size:12px">
+	<div id="contentpanel" style="padding: 0px;">
+		<!--bpcontent-->
+		<div id="westpanel" style="padding: 5px; margin: 0px; border-style: solid; font-size: 12px; border-color: grey; border-width: 1px; overflow: scroll;">
+			<h2>Rotated Left Hierarchy Demo</h2>
+			<p id="pageFitMode">Page Fit Mode</p>
+            <p id="orientationType">Orientation</p>
+			<p id="verticalAlignment">Items Vertical Alignment</p>
+            <p id="horizontalAlignment">Items Horizontal Alignment</p>
+			<p id="connectorType">Connectors</p>
+			<p id="leavesPlacementType">Leaves placement</p>
+			<p id="minimalVisibility">Minimal nodes visibility</p>
+			<p id="selectionPathMode">Selection Path Mode</p>
+			<p id="hasSelectorCheckbox">Selection check box</p>
+			<p id="graphicsType">Graphics</p>
+			<p id="actualGraphicsType"></p>
+		</div>
+		<div id="centerpanel" style="overflow: hidden; padding: 0px; margin: 0px; border: 0px;">
+		</div>
+		<div id="southpanel">
+		</div>
+		<!--/bpcontent-->
+	</div>
+	<div id="northpanel" style="padding: 0px; margin: 0px;">
+		<ul id="nav" class="dropdown dropdown-horizontal">
+			<li><a href="index.html">Navigation</a></li>
+            <li><a href="orientation.html">Chart Orientation</a></li>
+			<li><a href="crossteamgroup.html">Cross Team Group</a></li>
+			<li><a href="verticallayout.html">Vertical Children Layout</a></li>
+			<li><a href="directreports40.html">Chart Editor</a></li>
+			<li><a href="resize.html">Misc</a></li>
+			<li><a href="bootstrap.html">Bootstrap</a></li>
+			<li><a href="phpdemo.php">PHP Demo</a></li>
+			<li><a href="text.html">Text</a></li>
+			<li><a href="callout.html">Callout</a></li>
+		</ul>
+	</div>
+</body>
+</html>

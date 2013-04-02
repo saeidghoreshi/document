@@ -1,0 +1,59 @@
+<html>
+<head>
+ <!--JQUERY BASE-->
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="http://springrainbow.ca/assets/library/jquery/jquery-ui-1.8.18.custom/js/jquery-ui-1.8.18.custom.min.js"></script>
+
+
+<script src="uiBlock.js" language="javascript"></script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#blockButton').click(function () {
+            $('#div').block({ message: null });
+        });
+
+        $('#blockButton2').click(function () {
+            $('#div').block({
+                message: '<h1>Processing</h1>',
+                css: { border: '3px solid gray' }
+            });
+        });
+
+        $('#unblockButton').click(function () {
+            $('#div').unblock();
+        });
+
+    }); 
+</script> 
+<style type="text/css">
+.c
+{
+    width:450px;
+    height:100px;
+    border:1px solid red;
+}
+h1
+{
+    font:10px verdana;
+    }
+
+</style>
+</head>
+
+<body>
+<button id="blockButton">Block1</button>
+<button id="blockButton2">Block2</button>
+<button id="unblockButton">UnBlock</button>
+
+<div  id="div" class="c">
+<button id="">test</button>
+</div>
+
+</body>
+
+</html>

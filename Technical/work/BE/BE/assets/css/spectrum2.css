@@ -1,0 +1,398 @@
+@import url('panel.css');
+
+body{
+	background-image: url(../images/bgtile.png);
+	background-attachment: fixed;
+}
+
+.x-btn-default-toolbar-medium
+{
+	text-align: center;
+	min-width: 45px;
+	min-height:60px;
+}
+
+.x-btn-default-toolbar-large,
+.x-btn-default-toolbar-medium,
+.x-btn-default-toolbar-small
+{
+	display:block;
+}
+
+.ctr{ padding:10px; padding-bottom:0px; }
+
+/*IE9 fix*/
+/*
+.dghidden:before{content:'<!--'}
+.dghidden:after{content:'-->'}*/
+
+div.window{
+	
+	overflow:hidden;
+}
+.dghidden
+{ 
+	visibility: hidden;
+	height:0px ;
+	padding-bottom:-10px; 
+
+	/*margin-top:10px; */
+ 
+	
+}
+
+/*for LiveGridSearchPanel*/
+.x-livesearch-match 
+{
+    font-weight: bold;
+    background-color: yellow;
+}
+
+/*div#spectrum-stage div:first-child
+{
+	background-color: transparent;
+}
+*/
+div#tabwelcome div.x-panel-body
+{
+	background-image: url(/assets/images/backgrounds/softball4-lg2.jpg);
+	background-position: center right;
+	background-repeat: no-repeat;
+}
+
+h1.title
+{
+	background-image: url(/assets/images/backgrounds/titles.png);
+	background-repeat: no-repeat;
+	display:block;
+	height:50px;
+	margin:0px;
+	padding:0px;
+}
+
+h1.title-welcome{ background-position: 0px 0px; }
+h1.title-gettingstarted{ background-position: 0px -70px; height:65px; }
+
+div.welcome-stage
+{
+	height:100%;
+	position: relative;
+}
+
+div.welcome-text
+{
+	position: absolute;
+	padding:0px;
+	margin:0px;
+	margin-bottom:15px;
+	margin-right:340px;
+	top:0px;
+	width:520px;
+}
+
+div.startpos1{ left:0px; }
+div.startpos2{ left:1920px; }
+div.startpos3{ left:1920px; top:65px; }
+div.startpos4{ left:1920px; top:424px; }
+
+div.welcome-text p
+{
+	color:#FFFFFF;
+	font-weight:bold;
+	font-size:16px;
+	font-family: 'Tahoma';
+	padding:5px;	
+	text-shadow: #000000 1px 1px 0px;
+}
+
+div.welcome-text div.tut
+{
+	border-left:20px solid #FFFFFF;
+	margin:5px;
+}
+
+div.welcome-text a
+{
+	padding:5px;
+	text-shadow: #000000 1px 1px 0px;
+	color:#FFFFFF;
+	font-weight:bold;
+	font-size:16px;
+	font-family: 'Tahoma';
+	display:block;
+	font-size:14px;
+	text-decoration: none;
+	padding-left:22px;
+	margin-left:-18px;
+	background-image: url(http://endeavor.servilliansolutionsinc.com/global_assets/silk/film.png);
+	background-position: left;
+	background-repeat: no-repeat;
+}
+
+div.welcome-text a:hover
+{
+	color:#FFFF00;
+}
+
+.clear{ clear:both; }
+
+/*Added by Ryan if needed - for grouping header*/
+.x-grid-group-hd .x-grid-cell-inner 
+{
+    background: #F2F2F2 !important;
+}
+/*Added by ryan for take the border off the form
+.x-panel-body-default 
+{
+    border: 1px solid #DFE8F6 !important;
+}*/
+.x-docked-bottom {
+    border-top-width: 1px !important;
+}
+
+/****************************/
+/****** PASSWORD  LOGIN *****/
+/****************************/
+
+div.captchaNote
+{
+	font-size:10px;
+}
+
+h1#titleLogin
+{
+	font-variant: small-caps;
+	color:#003366;
+	font-size:16px;
+	margin-top:26px;
+}
+
+div.btnForgot
+{
+	text-align:right;
+	font-size: 10px;	
+}
+
+div.btnForgot a
+{
+	text-decoration: none;
+	color:#003366;
+}
+
+div.btnForgot a:hover
+{
+	text-decoration: underline;
+}
+
+
+/*SB: added for the 'make default' button to center the star image*/
+.backcenter { 
+   background-position:center  !important;
+   width: auto !important;
+}
+
+
+/*SB: added to simualte <hr> margin: 6px 0;  uses same color as ext font text*/
+div.hr {
+background-color: #04468C;
+border: 1px solid #04468C;
+height: 1px;
+
+margin-bottom: 10px!important;
+margin-top:    10px!important;
+
+margin-right:  30px!important;
+margin-left:   30px!important;
+ 
+}
+
+/* added for active org titles */
+div.x-menu-item-plain h1
+{
+	padding:5px;
+	background-color:#EEEEEE;
+	margin-top:-2px;
+}
+
+/* for help screen in bottom tab: in views/help/default.php */
+table.helpTable{
+	width:100%;
+	
+	
+	
+}
+ul.x-menu-list {
+ /* height: expression( this.scrollHeight > 350 ? "350px" : "auto" ); /* sets max-height for IE */    
+ /* width: 200px;*/
+  max-height: 350px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+span.helpText{
+	
+	
+}
+span.helpIcon{
+	
+	
+}
+
+
+
+
+#btnRegRed {
+	-moz-box-shadow:inset 1px 1px 0px 0px #eb4141;
+	-webkit-box-shadow:inset 1px 1px 0px 0px #eb4141;
+	box-shadow:inset 1px 1px 0px 0px #eb4141;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ff0000), color-stop(1, #851515) );
+	background:-moz-linear-gradient( center top, #ff0000 5%, #851515 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0000', endColorstr='#851515');
+	background-color:#ff0000;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+	border:3px solid #dcdcdc;
+	display:inline-block;
+	color:#ffffff;
+	font-family:arial;
+	font-size:14px;
+	font-weight:bold;
+	padding:8px 15px;
+	text-decoration:none;
+	text-shadow:1px 1px 1px #636363;
+}
+#btnRegRed:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #851515), color-stop(1, #ff0000) );
+	background:-moz-linear-gradient( center top, #851515 5%, #ff0000 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#851515', endColorstr='#ff0000');
+	background-color:#851515;
+}
+#btnRegRed:active {
+	position:relative;
+	top:1px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*for the warning bar*/
+
+.message
+{
+                -webkit-background-size: 40px 40px;
+                -moz-background-size: 40px 40px;
+                background-size: 40px 40px;
+                background-image: -webkit-gradient(linear, left top, right bottom,
+                                                        color-stop(.25, rgba(255, 255, 255, .05)), color-stop(.25, transparent),
+                                                        color-stop(.5, transparent), color-stop(.5, rgba(255, 255, 255, .05)),
+                                                        color-stop(.75, rgba(255, 255, 255, .05)), color-stop(.75, transparent),
+                                                        to(transparent));
+                background-image: -webkit-linear-gradient(135deg, rgba(255, 255, 255, .05) 25%, transparent 25%,
+                                                        transparent 50%, rgba(255, 255, 255, .05) 50%, rgba(255, 255, 255, .05) 75%,
+                                                        transparent 75%, transparent);
+                background-image: -moz-linear-gradient(135deg, rgba(255, 255, 255, .05) 25%, transparent 25%,
+                                                        transparent 50%, rgba(255, 255, 255, .05) 50%, rgba(255, 255, 255, .05) 75%,
+                                                        transparent 75%, transparent);
+                background-image: -ms-linear-gradient(135deg, rgba(255, 255, 255, .05) 25%, transparent 25%,
+                                                        transparent 50%, rgba(255, 255, 255, .05) 50%, rgba(255, 255, 255, .05) 75%,
+                                                        transparent 75%, transparent);
+                background-image: -o-linear-gradient(135deg, rgba(255, 255, 255, .05) 25%, transparent 25%,
+                                                        transparent 50%, rgba(255, 255, 255, .05) 50%, rgba(255, 255, 255, .05) 75%,
+                                                        transparent 75%, transparent);
+                background-image: linear-gradient(135deg, rgba(255, 255, 255, .05) 25%, transparent 25%,
+                                                        transparent 50%, rgba(255, 255, 255, .05) 50%, rgba(255, 255, 255, .05) 75%,
+                                                        transparent 75%, transparent);
+                 -moz-box-shadow: inset 0 -1px 0 rgba(255,255,255,.4);
+                 -webkit-box-shadow: inset 0 -1px 0 rgba(255,255,255,.4);
+                 box-shadow: inset 0 -1px 0 rgba(255,255,255,.4);
+                 width: 100%;
+                 border: 1px solid;
+                 color: #fff;
+                 padding: 15px;
+                 position: fixed;
+                 _position: absolute;
+                 text-shadow: 0 1px 0 rgba(0,0,0,.5);
+                 -webkit-animation: animate-bg 5s linear infinite;
+                 -moz-animation: animate-bg 5s linear infinite;
+}
+
+.info
+{
+                 background-color: #4ea5cd;
+                 border-color: #3b8eb5;
+}
+
+.error
+{
+                 background-color: #de4343;
+                 border-color: #c43d3d;
+}
+
+.warning
+{
+                 background-color: #eaaf51;
+                 border-color: #d99a36;
+}
+
+.success
+{
+                 background-color: #61b832;
+                 border-color: #55a12c;
+}
+
+.message h3
+{
+                 margin: 0 0 5px 0;
+}
+
+.message p
+{
+                 margin: 0;
+}
+
+@-webkit-keyframes animate-bg
+{
+    from {
+        background-position: 0 0;
+    }
+    to {
+       background-position: -80px 0;
+    }
+}
+
+@-moz-keyframes animate-bg
+{
+    from {
+        background-position: 0 0;
+    }
+    to {
+       background-position: -80px 0;
+    }
+}
+
+
+/* Feedback Widget. see also the bottom of views/spectrum2.css and javascript: App.menuHandlers.submitBugFeature(); in global/controller.js */
+#fdbk_tab
+{
+	position:absolute;
+    bottom:0;
+    right:0;
+    width:350px;
+	margin-right: 75px;
+	margin-bottom: 8px !important;
+}
+
+
+
+
+

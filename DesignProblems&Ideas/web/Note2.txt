@@ -1,0 +1,302 @@
+----------------------------
+//EntityConnection cnp = new EntityConnection("metadata=res://*/x.csdl|res://*/x.ssdl|res://*/x.msl;provider=Npgsql;provider connection string='" + ConfigurationManager.ConnectionStrings["plpgConnection"].ConnectionString + "'");
+            //plPgSql db = new plPgSql();
+            //db.Connect();
+            //DataTable dt = db.fetch("select t.topic_id as type_id,t.topic_title as type_name,tc.parent_type_id " +
+            //" from public.lu_topic_category_type tc "+
+            //" inner join public.topic t on t.category_type_id = tc.type_id " +
+            //"where is_active=true and deleted_flag=false  order by tc.type_id"+
+            //"").Tables[0];
+
+            
+
+
+            //ArrayList arrList = new ArrayList();
+            //foreach (var x in  dt)
+            //{
+            //    //arrList.Add(
+            //    //new Student
+            //    //{
+            //    //    FirstName = "Svetlana",
+            //    //    LastName = "Omelchenko",
+            //    //    Scores = new int[] { 98, 92, 81, 60 }
+            //    //});
+
+            //}
+            //var query = from Student student in arrList
+            //            where student.Scores[0] > 95
+            //            select student;
+       
+            
+            //var model =
+            //from e in new repo().getMenu(dt) //IEnumerable (1)new IEnumerable<> (2) context [select new]
+            //select e;
+            //return Json(model.ToList(), JsonRequestBehavior.AllowGet);
+
+
+----------
+@{
+    ViewBag.Title = "EF";
+}
+@if (ViewBag.m1!=null)
+{
+    foreach (var movie in ViewBag.m1)
+    {
+        movie.reviews.Load();
+        foreach (var r in movie.reviews) 
+        {
+            Response.Write(r.review_id);
+        }   
+    }
+}
+-----
+@using System.Data
+@{
+    ViewBag.Title = "test";
+}
+
+ @foreach (System.Data.DataRow row in ((DataSet)ViewBag.x).Tables[0].Rows) {
+
+     Response.Write("<br>"+row["topic_details"].ToString());
+ }
+------------------------------------------------------------------------------------------
+tabs
+------------------------------------------------------------------------------------------
+<style>
+    /*Hor*/
+	 .tdh
+     {
+        padding:5px;
+        
+        border:solid #ddd;
+	    border-width:0px 1px 0px 0px;
+	    height:50px;
+	    font:10px verdana;
+	    cursor:pointer;
+	    border-top-left-radius:5px;
+	    border-bottom-left-radius:5px;
+     }
+	.tdhoff{border-width:0px 1px 0px 0px;background:transparent}
+	.tdhon{border-width:1px 1px 1px 1px;border-right-color:white; background:white;}
+	
+	.tabshBody
+	{
+	    border:1px solid #ddd;
+	    border-width:1px 1px 1px 0px;
+	    width:100%;
+	    background:white;
+	    
+	    border-top-right-radius:5px;
+	    border-bottom-right-radius:5px;
+	}
+	.spacerhtop
+	{
+	    border:solid #ddd;
+	    border-width:0px 1px 0px 0px;
+	    height:10px;    
+	}
+	.spacerhbottom
+	{
+	    border:solid #ddd;
+	    border-width:0px 1px 0px 0px;
+	    height:100%;    
+	}
+    </style>
+<script>
+
+        $(document).ready(function () {
+
+            $('.tabh').click(function () {
+
+                $('.tdhon').each(function () {
+
+                    $(this).removeClass('tdhon');
+                    $(this).addClass('tdhoff');
+                });
+
+
+                $(this).removeClass('tdhoff');
+                $(this).addClass('tdhon');
+
+            });
+        });
+	    
+
+	</script>
+
+
+<div id="theme1_maintable" style="width:100%;">
+
+
+
+
+<div style="display:table;width:100%;height:100%" >
+    
+   
+    <div style="display:table-row">
+    <div style="display:table-cell">
+    
+    <div style="display:table;width:100%;height:100%">
+    <div style="display:table-row">
+    <div style="display:table-cell">
+
+        <table  cellpadding="0" cellspacing="0" border="0" style="height:100%" >
+        <tr>
+            <td class="spacerhtop"><div></div></td>
+        </tr>
+        
+        <tr>
+            <td class="tabh tdh tdhon">
+                <div class="side" >
+                    <img  id="side1" width="50px" height="50px" src="../../../resources/components/base/images/2.png" />
+                </div>
+            </td>
+            </tr>
+        <tr>
+            <td class="tabh tdh tdhoff">
+                <div class="side" >
+                    <img id="side2" width="50px" height="50px" src="../../../resources/components/base/images/user.png" />
+                </div>
+            </td>
+            </tr>
+        <tr>
+            <td class="tabh tdh tdhoff">
+                <div class="side" >
+                    <img  id="side3" width="50px" height="50px" src="../../../resources/components/base/images/permissions.png" />
+                </div>
+            </td>
+            </tr>
+        <tr>
+            <td class="tabh tdh tdhoff">
+                <div class="side" >
+                    <img  id="side4" width="50px" height="50px" src="../../../resources/components/base/images/apple_folder.png" />
+                </div>
+            </td>
+            </tr>
+        <tr>
+            <td class="tabh tdh tdhoff">
+                <div class="side" >
+                    <img  id="side5" width="50px" height="50px" src="../../../resources/components/base/images/tasks.png" />
+                </div>
+            </td>
+            </tr>
+        <tr>
+            <td class="tabh tdh tdhoff">
+                <div class="side" >
+                    <img  id="side8" width="50px" height="50px" src="../../../resources/components/base/images/settings.png" />
+                </div>
+            </td>
+            </tr>
+        
+        <tr>
+            <td class="tabh tdh tdhoff">
+                <div id="theme1_loginAccess" class="side theme1_loginAccess">
+                <!--Login Section-->
+                <div id="theme1_loginRequest" class="theme1_loginRequest"></div>
+
+            <!--Logout Section-->
+                <div id="theme1_logoutSection" class="hide">
+                        <div id="theme1_logoutRequest" class="theme1_logoutRequest"></div>
+                </div>
+            </div>
+            </td>
+            </tr>
+        <tr>
+            <td class="tabh tdh tdhoff">
+                <div class="side" >
+                    <img  id="side9"  width="50px" height="50px" src="../../../resources/components/base/images/facebook.png" />
+                </div>
+            </td>
+            
+        </tr>
+        
+
+        <tr>
+            <td class="spacerhbottom"><div></div></td>
+        </tr>
+        </table>
+    </div>
+    
+    <div style="display:table-cell" class="tabshBody">
+        <div class="div firstPH" id="firstPH" ></div>
+    </div>
+    <!--empty bar-->
+    <div style="display:table-cell" class="theme1_div3"></div>
+    
+    <!--Right Panel-->
+    <div style="display:table-cell" class="theme1_div4">
+        <div id="secondPH" style="width:220px"></div>
+    </div>
+    
+    
+    </div>
+    </div>
+    
+    </div>
+    </div>
+
+    <div style="display:table-row;height:5px">
+    <div style="display:table-cell; vertical-align:bottom">
+        
+    </div>
+    </div>
+
+    <div style="display:table-row;height:20px">
+    <div style="display:table-cell; vertical-align:bottom">
+        <div id="topContainer"></div>
+    </div>
+    </div>
+
+
+</div>
+
+</div>
+------------------------------------------------------------------------------------------
+uplaod
+------------------------------------------------------------------------------------------
+ASM.NET MVC
+serverside
+string timestamp = DateTime.Now.Ticks.ToString();
+var file = Request.Files["createNewtask_file"];
+file.SaveAs(Server.MapPath("../../Path") + timestamp+file.FileName);
+
+
+client side
+$("#uploadfileItem").die("change").live({ change: function () {
+                    var formObject = document.getElementById('formname');
+                    YAHOO.util.Connect.setForm(formObject, true, true);
+                    YAHOO.util.Connect.asyncRequest("POST", "url",
+                    {
+                        upload: function (o) {
+                            
+				//ASP.net returns back styles result in YUI ajax upload
+                            var startIndex = o.responseText.indexOf("{");
+                            var endIndex = o.responseText.indexOf("</pre>");
+    
+                            data =
+			    YAHOO.lang.JSON.parse(o.responseText.substring(startIndex, endIndex));
+
+                        },
+                        failure: function (o) { alert("failed") }
+                    });
+                }
+                });
+
+html
+<form id="formname" name="formname" enctype="multipart/form-data" >
+<input type="file" id="uploadfileItem_file" name="uploadfileItem" />
+</form>
+
+------------------------------------------------------------------------------------------
+curl -vX POST http://xxxx -H "Content-Type:application/json" -d 'name:"bob" -d age:25'
+
+------------------------------------------------------------------------------------------
+
+
+STORE[ treestore - store ]
+any change in view will be reflected in store automatically
+------------------------------------------------------------------------------------------
+
+
+
+------------------------------------------------------------------------------------------

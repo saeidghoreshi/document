@@ -1,0 +1,18 @@
+1-if no division is defned per season , do we consider season as division [pool] to run scheduler ? 
+
+2-League-season  (step1)>>  Tour-Season scnario (step2)
+
+2-1 :example of how teams will be selected for step2
+2-2 :step1 output would be saved in standings ?
+2-3 :who/how decide to pick teams from standinds for the next level?
+
+
+3-how we define abstrct blocks in system to participate in scheeduling
+4-how new registered teams will be treatted in system ? as a league team or tournamt team and who/how this decision will be refleted in system
+5-as said this newly registerd team will occupy preddefined placeholders in tournameent seasson ?
+6-in which other part of system we use place holder?
+7- how we manager scheduling for a block - group? and how this timing will be managed ?
+8-how rollbacjk in scheduling is possible if some mistaes happend in team registration or any other decision ?
+9-same team [in the league-season and tour-season] scheduling will overlap or not? time range must not overlap if wanna keep same team referece for all leagues or tours?
+10-wanna keep tour structure/ops the same as league for scheduling with seperate tabeling or by giving type to league table and make it work for both of them ?
+11-how stages change and  timing will be managed ?

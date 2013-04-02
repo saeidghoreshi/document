@@ -1,0 +1,24 @@
+When you’re making a PHP curl attempt, you must send the post variable ‘endeavor-auth’ and set it to the result of this code:
+
+$ua = "ENDEAVOR_CRON_6910";
+$td = mcrypt_module_open('tripledes', '', 'ecb', '');
+$iv = mcrypt_create_iv (mcrypt_enc_get_iv_size($td), MCRYPT_RAND);
+$key = substr(md5(date('i')),0,mcrypt_enc_get_key_size($td));
+mcrypt_generic_init($td, $key, $iv);
+$ua = mcrypt_generic($td, $ua);
+$ua = $ua."||||".$iv;
+mcrypt_generic_deinit($td);
+mcrypt_module_close($td);
+$ua = base64_encode($ua);
+$ua = array_shift(unpack('H*', $ua));
+
+The curl code is:
+
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, "http://".DOMAIN."/index.php/$c/$m");
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_POSTFIELDS, "endeavor-auth=".$ua);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_exec($ch);
+
+This process is automatic when using curl in the cron.php file.

@@ -1,0 +1,82 @@
+<html>
+  <head>
+  <!--JQUERY BASE-->
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="http://springrainbow.ca/assets/library/jquery/jquery-ui-1.8.18.custom/js/jquery-ui-1.8.18.custom.min.js"></script>
+
+  <style type="text/css">
+  
+  .google-visualization-orgchart-node
+  {
+        border:0px solid transparent !important;    
+        background-color:transparent !important;
+        background:url('http://cloudcodeclub.com/resources/modules/workflow/images/logo3.png') no-repeat !important;
+        -moz-border-radius: 0px !important;
+        -webkit-border-radius: 0px !important;
+        
+        -webkit-box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px !important;
+        -moz-box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px !important;
+  }
+  .google-visualization-orgchart-noderow-medium
+  {
+    height:45px !important;    
+  }
+  
+  
+  
+  
+  </style>
+    <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+    <script type='text/javascript'>
+        google.load('visualization', '1', { packages: ['orgchart'] });
+        google.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Name');
+            data.addColumn('string', 'Manager');
+            data.addColumn('string', 'ToolTip');
+            data.addRows([
+              [{ v: 'Carol1', f: '<div class="node" myId=1 style="width:50px;height:50px"></div>' }, '', ''],
+              [{ v: 'Carol2', f: '<div class="node" myId=2 style="width:50px;height:50px"></div>' }, 'Carol1', ''],
+              [{ v: 'Carol3', f: '<div class="node" myId=3 style="width:50px;height:50px"></div>' }, 'Carol1', ''],
+              [{ v: 'Carol4', f: '<div class="node" myId=4 style="width:50px;height:50px"></div>' }, 'Carol1', ''],
+              [{ v: 'Carol5', f: '<div class="node" myId=5 style="width:50px;height:50px"></div>' }, 'Carol3', ''],
+              [{ v: 'Carol6', f: '<div class="node" myId=6 style="width:50px;height:50px"></div>' }, 'Carol5', ''],
+              [{ v: 'Carol7', f: '<div class="node" myId=7 style="width:50px;height:50px"></div>' }, 'Carol5', ''],
+              [{ v: 'Carol8', f: '<div class="node" myId=8 style="width:50px;height:50px"></div>' }, 'Carol5', ''],
+              [{ v: 'Carol9', f: '<div class="node" myId=9 style="width:50px;height:50px"></div>' }, 'Carol5', ''],
+              [{ v: 'Carol10', f: '<div class="node" myId=10 style="width:50px;height:50px"></div>' }, 'Carol5', ''],
+              [{ v: 'Carol11', f: '<div class="node" myId=11 style="width:50px;height:50px"></div>' }, 'Carol5', ''],
+
+              [{ v: 'Carol12', f: '<div class="node" myId=7 style="width:50px;height:50px"></div>' }, 'Carol6', ''],
+              [{ v: 'Carol13', f: '<div class="node" myId=8 style="width:50px;height:50px"></div>' }, 'Carol6', ''],
+              [{ v: 'Carol14', f: '<div class="node" myId=9 style="width:50px;height:50px"></div>' }, 'Carol6', ''],
+              [{ v: 'Carol15', f: '<div class="node" myId=10 style="width:50px;height:50px"></div>' }, 'Carol6', ''],
+              [{ v: 'Carol16', f: '<div class="node" myId=11 style="width:50px;height:50px"></div>' }, 'Carol6', '']
+              
+            ]);
+            var chart = new google.visualization.OrgChart(document.getElementById('chart_div'));
+            chart.draw(data, { allowHtml: true });
+
+            $('.node').die("click").live({ click: function () {
+
+                alert($(this).attr("myId"));
+            }
+            });
+
+            $('.node').die("mouseover").live({ mouseover: function () {
+
+                $('body').append($(this).attr("myId"));
+            }
+            });
+
+        }
+    </script>
+  </head>
+
+  <body>
+    <div style="width:700px;height:300px" id='chart_div'></div>
+  </body>
+</html>

@@ -1,0 +1,64 @@
+.green
+{
+	background-color:green;
+}
+.blue
+{
+	background-color:blue;
+}
+.yellow
+{
+	background-color:yellow;
+}
+.red
+{
+	background-color:red;
+}
+
+.yui-dt table:focus,
+.yui-dt tbody:focus,
+.yui-dt tfoot:focus,
+.yui-dt thead:focus,
+.yui-dt tr:focus ,
+.yui-dt-data:focus ,
+.yui-dt-scrollable .yui-dt-data:focus 
+{outline:0;}
+.label
+{
+
+font-weight: bold;
+
+}
+.right
+{
+    text-align:right;
+    float:right;
+}
+.left
+{
+    float:left;
+}
+
+.bigtable{
+    width:100%;
+    border:1;
+    
+}
+.cell
+{
+    
+   vertical-align: top;
+   
+ /*  padding-bottom: 2em;*/
+}
+
+.half
+{
+    width:50%;
+}
+
+input.time
+{
+    width:25px; /*did not work with class="", had to put style="" directly inline ..???*/
+    text-align:right; 
+}

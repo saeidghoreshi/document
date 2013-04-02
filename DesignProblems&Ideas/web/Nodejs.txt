@@ -1,0 +1,10 @@
+http://blog.marcon.me/post/31143865164/send-images-through-websockets
+
+http://net.tutsplus.com/tutorials/javascript-ajax/how-to-create-a-resumable-video-uploade-in-node-js/
+http://courseware.codeschool.com/node_slides.pdf
+http://markdawson.tumblr.com/post/18359176420/asynchronous-file-uploading-using-express-and-node-js
+ http://stackoverflow.com/questions/10183998/how-to-connect-formidable-file-upload-to-socket-io-in-node-js
+http://tutorialzine.com/2012/08/nodejs-drawing-game/
+
+http://courseware.codeschool.com/node_slides.pdf
+ http://markdawson.tumblr.com/post/18359176420/asynchronous-file-uploading-using-express-and-node-js

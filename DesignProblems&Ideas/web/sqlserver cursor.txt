@@ -1,0 +1,22 @@
+declare @resourceID int;
+declare @title varchar(200);
+
+DECLARE _cursor CURSOR FOR SELECT id,title FROM wtopology.[resource];
+
+OPEN _cursor;
+
+FETCH NEXT FROM _cursor INTO @resourceID , @title;
+
+WHILE @@FETCH_STATUS = 0
+BEGIN
+    
+    if not exists (select 1 from wtopology.resourceHighlight where resourceID != @resourceID)
+	then
+		insert into wtopology.resourceHighlight (resourceID,colorCode)
+		select @resourceID,'yellow' 
+	end
+    
+    FETCH NEXT FROM _cursor  INTO @id, @title;
+END
+CLOSE _cursor;
+DEALLOCATE _cursor;

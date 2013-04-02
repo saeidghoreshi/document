@@ -1,0 +1,1027 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>This will help you to customize - Dreamworks</title>
+<link rel="stylesheet" href="assets/code_highlighter/shCoreDefault.css" />
+<style type="text/css">
+body {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	background:url(assets/pat1.png);
+	line-height:1.5em;
+}
+div.documentation {
+	width:960px;
+	padding:20px;
+	background:#fff;
+	margin:auto;
+}
+hr {
+	border-style:solid 1px #999;
+	border-width:1px 0px 0px;
+}
+h4 {
+	font-size:16px;
+	color:#3D485A;
+}
+h5 {
+	font-size:14px;
+	font-weight:bold;
+	color:#284062;
+	border-bottom:dotted 1px #ccc;
+}
+p.title {
+	color:#06F;
+}
+code {
+	color:#39F;
+	background:#F7F7F7;
+	padding:3px;
+	border:solid 1px #CCC;
+	display:inline-block;
+}
+ul li {
+	list-style:square;
+}
+a {
+	color:#2663A6;
+	text-decoration:underline;
+	display:block;
+	padding:5px 20px;
+	background:url(assets/wd.png) no-repeat left center;
+}
+li {
+	font-weight:bold;
+}
+.usage_code{
+	background:#E8E8E8;
+	border:dashed 2px #ccc;
+	border-radius:6px;
+	padding:20px;
+	margin-bottom:20px;
+}
+.usage_code .title{
+	font-size:16px;
+	color:#036;
+}
+.usage_code hr{
+	border-bottom:solid 2px #ccc;
+	border-width:0px 0px 2px 0px;
+}
+</style>
+<script type="text/javascript" src="assets/code_highlighter/jquery.min.js"></script>
+<script type="text/javascript" src="assets/code_highlighter/shCore.js"> </script>
+<script type="text/javascript" src="assets/code_highlighter/shBrushJScript.js"> </script>
+<script type="text/javascript">
+jQuery(document).ready(function() {
+		SyntaxHighlighter.all();
+});	
+</script>
+</head>
+<body>
+<div class="documentation">
+    <section> <img src="assets/head.jpg" />
+        <p style="color:#666; font-style:italic; font-weight:bold;">Thanks for purchasing Dreamworks Admin Template</p>
+        <span style=" background-color:#d8bd86; padding:3px 8px; border-radius:3px; color:#fff; float:right;">Dreamworks <b>1.2</b></span>
+<h4>Files in Dreamworks Package</h4>
+        <hr>
+        <ol>
+            <li>20 Fully commented HTML pages</li>
+            <li>2 Fully layered PSD Files</li>
+            <li>Documentation</li>
+        </ol>
+        <h4>Features:</h4>
+        <hr>
+        <ul>
+            <li>Responsive Layout</li>
+            <li>Liquid two column layout</li>
+            <li>14 jquery plugins</li>
+            <li>Iconsweet - Icon font</li>
+            <li>Ipad & Iphone Friendly</li>
+            <li>Forms, Charts, Gallery, Date picker, Full Calendar, File Upload, WYSIWYG Editor, Grid, Modal Window, Error Pages & much more..</li>
+        </ul>
+	<div class="clear"></div>
+        <h4>Changelog: v1.3</h4>
+	<hr>
+	<ul>
+        	<li>Now it is iPhone compatible</li>
+            	<ul>
+                    <li style="list-style:circle; color:#666;">Files Added :(jquery.ui.touch-punch.min.js)  New JS for slider and other UI elements, touch functionality</li>
+                </ul>
+            <li>Modified (main.css) Modifed to make it fully responsive</li>
+        </ul>
+
+        <div class="clear"></div>
+        <h4>Changelog: v1.2</h4>
+        <hr>
+        <ul>
+        	<li>New <i style="color:#f31f28">"Dark Woods"</i> Theme available with this package.</li>
+            <li>Added jQuery <a href="http://datatables.net/" target="_blank" style="background:none; display:inline-block; padding:0px;">Data Table</a></li>
+            	<ul>
+                    <li style="list-style:circle; color:#666;">Files Added : jq_tables(Folder 'js/jqtables') - demo_table_jui.css, jquery.dataTables.js</li>
+                </ul>
+            <li>Modified (main.css) for New feature - Data Tables & Pagination</li>
+        </ul>
+        <div class="clear"></div>
+        <h4>Changelog: v1.1</h4>
+        <hr>
+        <ul>
+            <li>Replaced Highcharts(Chart Library) with <a href="http://code.google.com/p/flot/" target="_blank" style="background:none; display:inline-block; padding:0px;">jQuery Flot</a></li>
+            	<ul>
+                	<li style="list-style:circle; color:#666;">Files Removed : Highcharts.js, Exporting.js</li>
+                    <li style="list-style:circle; color:#666;">Files Added : jquery.flot.js, jquery.flot.stack.js, jquery.flot.pie.js, excanvas.js</li>
+                </ul>
+            <li>Fixed minor alignment issues with CSS (main.css)</li>
+        </ul>
+
+        <div class="clear"></div>
+        
+        <h4>Table of Contents:</h4>
+        <hr>
+      
+<ol>
+            <li>HTML Structure</li>
+            <li>CSS Files and structures</li>
+            <li>Javascript</li>
+            <li>Usage</li>
+            <li>Sources and credits</li>
+        </ol>
+        <div class="clear"></div>
+        <img src="assets/screen.jpg" />  
+        <h4>HTML Structure</h4>
+        <p>Dreamworks Admin Template runs in HTML5, with well commented code, which will help you to customize it for your own needs. </p>
+        <p>Here is the general structure.</p>
+
+
+
+        <pre class="brush: js;">
+            	<body>
+<!--Header-->
+<header>
+    <div id="logo"><a href="#"><img src="images/logo.png" alt="" /></a></div>
+    <!--Search-->
+    <div class="header_search">
+        <form action="">
+            <input type="text" name="search" placeholder="Search" id="ac">
+            <input type="submit" value="">
+        </form>
+    </div>
+</header>
+<!--Dreamworks Container-->
+<div id="dreamworks_container">
+    <!--Primary Navigation-->
+    <nav id="primary_nav">
+        <ul>
+            <li class="nav_dashboard active"><a href="index.html">Dashboard</a></li>
+            <li class="nav_graphs"><a href="charts.html">Graphs</a></li>
+            <li class="nav_forms"><a href="forms.html">Forms</a></li>
+            <li class="nav_typography"><a href="typography.html">Typography</a></li>
+            <li class="nav_uielements"><a href="ui_elements.html">UI Elements</a></li>
+            <li class="nav_pages"><a href="pages.html">Pages</a></li>
+        </ul>
+    </nav>
+<!--Main Content-->
+<section id="main_content">
+<!--Secondary Navigation-->
+<nav id="secondary_nav"> 
+<!--UserInfo-->
+<dl class="user_info">
+	<dt><a href="#"><img src="images/avatar.png" alt="" /></a></dt>
+    <dd>
+    <a class="welcome_user" href="#">Welcome,<strong>John Doe</strong></a>
+    <span class="log_data">Last sign in : 16:11 Feb 27th 2012</span>
+    <a class="logout" href="login.html">Logout</a>
+    <a class="user_messages" href="#"><span>12</span></a>
+    </dd>
+</dl>
+<h2>Dashboard</h2>
+<ul>
+	<li><a href="#"><span class="iconsweet">a</span>User Profiles</a></li>
+    <li><a href="#"><span class="iconsweet">k</span>Admin Tools</a></li>
+    <li><a href="#"><span class="iconsweet">o</span>Milestornes</a></li>
+    <li><a href="#"><span class="iconsweet">S</span>Worklog</a></li>
+</ul>
+</nav>
+        </pre>
+        
+
+        <div class="clear"></div>
+        <h4>Main CSS Files</h4>
+        <ol class="nostyle">
+            <li>
+                <p class="title">main.css</p>
+                <p>This style sheet contains specific styling for the template structure. It includes the base styles.</p>
+            </li>
+            <li>
+                <p class="title">typography.css</p>
+                <p>This style sheet contains specific styling for text elements.</p>
+            </li>       
+            <li>
+                <p class="title">reset.css</p>
+                <p>HTML Reset style sheet</p>
+            </li>         
+        </ol>
+
+        <h4>CSS files associated with jquery plugins</h4>
+
+        <ol class="nostyle">
+            <li>
+                <p class="title">bootstrap.css</p>
+                <p>Style sheet for Bootstrap Modal Window</p>
+            </li>
+            <li>
+                <p class="title">fullcalendar.css</p>
+                <p>Style sheet for Full Calendar Plugin</p>
+            </li>       
+            <li>
+                <p class="title">tipsy.css</p>
+                <p>Style sheet for Tipsy plugin</p>
+            </li> 
+            <li>
+                <p class="title">jquery.ui.all.css</p>
+                <p>Style sheet for jQuery UI</p>
+            </li>
+            <li>
+                <p class="title">jquery.ui.core.css</p>
+                <p>Style sheet for jQuery UI</p>
+            </li>       
+            <li>
+                <p class="title">jquery.ui.datepicker.css</p>
+                <p>Style sheet for jQuery UI</p>
+            </li>  
+            <li>
+                <p class="title">jquery.ui.progressbar.css</p>
+                <p>Style sheet for jQuery UI</p>
+            </li> 
+            <li>
+                <p class="title">jquery.ui.slider.css</p>
+                <p>Style sheet for jQuery UI</p>
+            </li>
+            <li>
+                <p class="title">jquery.ui.tabs.css</p>
+                <p>Style sheet for jQuery UI</p>
+            </li>       
+            <li>
+                <p class="title">jquery.ui.theme.css</p>
+                <p>Style sheet for jQuery UI</p>
+            </li> 
+            <li>
+                <p class="title">demo_table_jui.css</p>
+                <p>Style sheet for jQuery Tables</p>
+            </li>                                              
+        </ol>
+        
+        <h4>Javascript</h4>
+        <p>Dreamworks uses the following javascript files:</p>
+        <ol class="nostyle">
+            <li>
+                <p class="title">html5.js</p>
+                <p>HTML5 JavaScript shiv for IE to recognise and style the HTML5 elements. It is a way for non-modern browsers to acknowledge html5 elements such as <span class="code">&lt;article&gt;</span>, <span class="code">&lt;section&gt;</span>, etc.</p>
+            </li>
+            <li>
+                <p class="title">jquery.min.js</p>
+                <p>jQuery is a fast and concise JavaScript Library that simplifies HTML document traversing, event handling, animating, and Ajax interactions for rapid web development.</p>
+            </li>
+            <li>
+                <p class="title">jQUERY UI LIBRARY</p>
+                <p>This is a jQuery UI Library.</p>
+                	<ul>
+                    	<li><p class="title">jquery.ui.core.js</p></li>
+                        <li><p class="title">jquery.ui.widget.js</p></li>
+                        <li><p class="title">jquery.ui.mouse.js</p></li>
+                        <li><p class="title">jquery.ui.slider.js</p></li>
+                        <li><p class="title">jquery.ui.progressbar.js</p></li>
+                        <li><p class="title">jquery.ui.datepicker.js</p></li>
+                        <li><p class="title">jquery.ui.tabs.js</p></li>
+                    </ul>
+            </li>
+            <li>
+                <p class="title">bootstrap-modal.js</p>
+                <p>Bootstrap Modal window</p>
+            </li>
+            <li>
+                <p class="title">bootstrap-transition.js</p>
+                <p>Bootstrap Modal window</p>
+            </li>  
+            <li>
+                <p class="title">form_elements.js</p>
+                <p>This file helps you to customize form elements like "Checkbox, Radio button, Select, input..."</p>
+            </li>
+            <li>
+                <p class="title">jquery.autogrowtextarea.js</p>
+                <p>Autogrowing Text area</p>
+            </li>              
+            <li>
+                <p class="title">fullcalendar.js</p>
+                <p>Google Full Calendar</p>
+            </li>
+            <li>
+                <p class="title">gcal.js</p>
+                <p>Google Full Calendar</p>
+            </li>
+            <li>
+                <p class="title">jquery.flot.js</p>
+                <p>jQuery Flot Charts Library</p>
+            </li>
+            <li>
+                <p class="title">jquery.flot.stack.js</p>
+                <p>jQuery Flot Charts - Stack Chart</p>
+            </li>
+            <li>
+                <p class="title">jquery.flot.pie.js</p>
+                <p>jQuery Flot Charts - Pie Chart</p>
+            </li>
+            <li>
+                <p class="title">excanvas.js</p>
+                <p>jQuery Flot Canvas File</p>
+            </li>
+            <li>
+                <p class="title">jquery.easing.1.3.js </p>
+                <p>jQuery Easing Plugin</p>
+            </li>   
+            <li>
+                <p class="title">jquery.tipsy.js </p>
+                <p>jQuery Plugin for tooltip</p>
+            </li>  
+            <li>
+                <p class="title">jquery.cleditor.js </p>
+                <p>jQuery WYSIWIG Editor</p>
+            </li> 
+            <li>
+                <p class="title">jquery.uploadify.v2.1.4.js</p>
+                <p>jQuery File Uploader plugin</p>
+            </li>              
+            <li>
+                <p class="title">shCore.js </p>
+                <p>jQuery Syntax Highlighter</p>
+            </li>   
+            <li>
+                <p class="title">shBrushJScript.js</p>
+                <p>jQuery Syntax Highlighter support file</p>
+            </li>   
+            <li>
+                <p class="title">jquery.fancybox-1.3.4.pack.js</p>
+                <p>jQuery Fancybox Plugin</p>
+            </li>    
+            <li>
+                <p class="title">jquery.quicksand.js</p>
+                <p>jQuery Filtering Plugin</p>
+            </li>  
+            <li>
+                <p class="title">jquery.dataTables.js</p>
+                <p>jQuery Data Table Plugin</p>
+            </li>                                                                                                                                                   
+                                                           
+            <li >
+                <p class="title"><strong style="font-size:16px; color:#F30">main.js</strong></p>
+                <p>This includes all the necessary scripts needed for all the pages. Which makes the "call" for above listed plugins</p>
+            </li>
+        </ol>
+        <div class="clear"></div>
+        
+        
+        
+        <h4>
+            Usage
+</h4>
+        <div class="usage_code">
+        	<p class="title">Widget Structure</p>
+            <pre class="brush: js;">
+            	<div class="widget">
+        			<div class="widget_title"><span class="iconsweet">t</span><h5>Statistics</h5></div>
+           			 <div class="widget_body">
+            			Content
+           			</div>
+        		</div>
+            </pre>
+
+        	<p class="title">Grid</p>
+            Single Column<pre class="brush: js;"> <div class="one_wrap"></div></pre>         
+            Two Column<pre class="brush: js;"> <div class="one_two_wrap fl_left"></div></pre> 
+            Three Column<pre class="brush: js;"> <div class="one_three_wrap fl_left"></div></pre> 
+            Four Column<pre class="brush: js;"> <div class="one_four_wrap fl_left"></div></pre>
+            <hr />
+		</div>
+
+
+		<div class="usage_code">
+            <p class="title">jQuery Flot - Line chart</p>
+            HTML
+            <pre class="brush: js;"><div id="chart_linear"></div></pre>
+            JS
+            <pre class="brush: js;">
+/*LINE CHART*/
+		var sin = [], cos = [];
+		
+		for (var i = 0; i < 10; i += 0.5) {
+			sin.push([i, Math.sin(i)]);
+			cos.push([i, Math.cos(i)]);
+		}
+		
+		var plot = $.plot($("#chart_linear"), [ { data: sin, label: "sin(x)"}, { data: cos, label: "cos(x)" } ], {
+			series: {
+				lines: { show: true },
+				points: { show: true }
+			},
+			grid: { hoverable: true, clickable: true },
+			yaxis: { min: -1.1, max: 1.1 },
+			xaxis: { min: 0, max: 9 }
+		});
+		
+		function showTooltip(x, y, contents)
+		{
+			$('<div id="tooltip" class="tooltip">' + contents + '</div>').css({
+				position: 'absolute',
+				display: 'none',
+				top: y + 5,
+				left: x + 5,
+				
+				padding: '6px 5px',
+				'z-index': '9999',
+				'background-color': '#31383a',
+				'color': '#fff',
+				'font-size': '11px',
+				opacity: 0.85,
+				'border-radius': '3px',
+				'-webkit-border-radius': '3px',
+				'-moz-border-radius': '3px'
+			}).appendTo("body").fadeIn(200);
+		}
+		
+		var previousPoint = null;
+		
+		$("#chart_linear").bind("plothover", function (event, pos, item){
+			$("#x").text(pos.x.toFixed(2));
+			$("#y").text(pos.y.toFixed(2));
+			if ($("#chart_linear").length > 0)
+			{
+				if(item)
+				{
+					if(previousPoint != item.dataIndex)
+					{
+						previousPoint = item.dataIndex;
+						$("#tooltip").remove();
+						var x = item.datapoint[0].toFixed(2), y = item.datapoint[1].toFixed(2);
+						showTooltip(item.pageX, item.pageY, item.series.label + " of " + x + " = " + y);
+					}
+				}
+				else
+				{
+					$("#tooltip").remove();
+					previousPoint = null;
+				}
+			}
+		});
+		
+		$("#chart_linear").bind("plotclick", function (event, pos, item){
+			if(item) {
+				$("#clickdata").text("You clicked point " + item.dataIndex + " in " + item.series.label + ".");
+				plot.highlight(item.series, item.datapoint);
+			}
+		});
+            </pre>
+            <a href="http://code.google.com/p/flot/">Plugin Documentation</a>
+			
+            <hr />
+            <p class="title">jQuery Flot - Auto Update</p>
+            HTML
+            <pre class="brush: js;"><div id="auto_update"></pre>
+            JS
+            <pre class="brush: js;">
+            	/*CHART AUTOUPDATE*/
+		var data = [], totalPoints = 300;
+		function getRandomData() {
+			if (data.length > 0)
+				data = data.slice(1);
+	
+			// do a random walk
+			while (data.length < totalPoints) {
+				var prev = data.length > 0 ? data[data.length - 1] : 50;
+				var y = prev + Math.random() * 10 - 5;
+				if (y < 0)
+					y = 0;
+				if (y > 100)
+					y = 100;
+				data.push(y);			
+			}
+	
+			// zip the generated y values with the x values
+			var res = [];
+			for (var i = 0; i < data.length; ++i)
+				res.push([i, data[i]])
+			return res;
+		}
+	
+		// setup control widget
+		var updateInterval = 120;
+		$("#updateInterval").val(updateInterval).change(function () {
+			var v = $(this).val();
+			if (v && !isNaN(+v)) {
+				updateInterval = +v;
+				if (updateInterval < 1)
+					updateInterval = 1;
+				if (updateInterval > 2000)
+					updateInterval = 2000;
+				$(this).val("" + updateInterval);
+			}
+		});
+	
+		// setup plot
+		var options = {
+			series: { shadowSize: 0 }, // drawing is faster without shadows
+			yaxis: { min: 0, max: 100 },
+			xaxis: { show: false }
+		};
+		var plot = $.plot($("#auto_update"), [ getRandomData() ], options);
+	
+		function update() {
+			plot.setData([ getRandomData() ]);
+			// since the axes don't change, we don't need to call plot.setupGrid()
+			plot.draw();
+			
+			setTimeout(update, updateInterval);
+		}
+	
+		update();	
+            </pre>
+            <a href="http://code.google.com/p/flot/">Plugin Documentation</a>
+            <hr />
+            
+            
+            <p class="title">jQuery Flot - Stacked Chart</p>
+            HTML
+            <pre class="brush: js;"><div id="stacked_bar"></pre>
+            JS
+            <pre class="brush: js;">
+			var d1 = [];
+		for (var i = 0; i <= 10; i += 1)
+			d1.push([i, parseInt(Math.random() * 30)]);
+	
+		var d2 = [];
+		for (var i = 0; i <= 10; i += 1)
+			d2.push([i, parseInt(Math.random() * 30)]);
+	
+		var d3 = [];
+		for (var i = 0; i <= 10; i += 1)
+			d3.push([i, parseInt(Math.random() * 30)]);
+	
+		var stack = 0, bars = true, lines = false, steps = false;
+		
+		function plotWithOptions() {
+			$.plot($("#stacked_bar"), [ d1, d2, d3 ], {
+				series: {
+					stack: stack,
+					lines: { show: lines, fill: true, steps: steps },
+					bars: { show: bars, barWidth: 0.4 }
+				}
+			});
+		}
+	
+		plotWithOptions();
+		
+		$(".stackControls input").click(function (e) {
+			e.preventDefault();
+			stack = $(this).val() == "With stacking" ? true : null;
+			plotWithOptions();
+		});
+		$(".graphControls input").click(function (e) {
+			e.preventDefault();
+			bars = $(this).val().indexOf("Bars") != -1;
+			lines = $(this).val().indexOf("Lines") != -1;
+			steps = $(this).val().indexOf("steps") != -1;
+			plotWithOptions();
+		});
+            </pre>
+            <a href="http://code.google.com/p/flot/">Plugin Documentation</a>
+            
+            <hr />
+            
+
+
+            <p class="title">jQuery Flot - Pie with Legend</p>
+            HTML
+            <pre class="brush: js;"><div id="basic_pie"></div></pre>
+            JS
+            <pre class="brush: js;">
+			// data
+		/*var data = [
+			{ label: "Series1",  data: 10},
+			{ label: "Series2",  data: 30},
+			{ label: "Series3",  data: 90},
+			{ label: "Series4",  data: 70},
+			{ label: "Series5",  data: 80},
+			{ label: "Series6",  data: 110}
+		];*/
+		/*var data = [
+			{ label: "Series1",  data: [[1,10]]},
+			{ label: "Series2",  data: [[1,30]]},
+			{ label: "Series3",  data: [[1,90]]},
+			{ label: "Series4",  data: [[1,70]]},
+			{ label: "Series5",  data: [[1,80]]},
+			{ label: "Series6",  data: [[1,0]]}
+		];*/
+		var data = [];
+		var series = Math.floor(Math.random()*10)+1;
+		for( var i = 0; i<series; i++)
+		{
+			data[i] = { label: "Series"+(i+1), data: Math.floor(Math.random()*100)+1 }
+		}
+	
+	$.plot($("#basic_pie"), data,
+	{
+			series: {
+				pie: {
+					show: true,
+					radius: 1,
+					label: {
+						show: true,
+						radius: 3/4,
+						formatter: function(label, series){
+							return '<div style="font-size:8pt;text-align:center;padding:2px;color:white; line-height:16px;">'+label+'<br/>'+Math.round(series.percent)+'%</div>';
+						},
+						background: { opacity: 0.5 }
+					}
+				}
+			},
+			legend: {
+				show: false
+			}
+            </pre>
+            <a href="http://code.google.com/p/flot/">Plugin Documentation</a>
+			
+            <hr />
+            
+            
+            <p class="title">jQuery Flot - Pie Donut</p>
+            HTML
+            <pre class="brush: js;"><div id="pie_donut"></div></pre>
+            JS
+            <pre class="brush: js;">
+		$.plot($("#pie_donut"), data,
+		{
+				series: {
+					pie: {
+						innerRadius: 0.5,
+						show: true
+					}
+				}
+
+			}
+            </pre>
+            <a href="http://code.google.com/p/flot/">Plugin Documentation</a>
+			
+            <hr />            
+
+        
+       
+        
+        
+        <!--NEXT-->
+        <br />
+        <div class="usage_code">
+        
+        <p class="title">Sortable Projects/gallery (jQuery Quicksand)</p>
+            HTML
+            <pre class="brush: js;">
+            <div class="project_sort">
+                	<ul class="filter_project">
+                    	<li class="segment  selected"><a class="all" href="#">All </a></li>
+                        <li class="segment"><a class="incomplete" href="#">Incomplete</a></li>/*<a class="incomplete" href="#"> This shows the category incomplete*/
+                        <li class="segment"><a class="Resolved" href="#">Resolved</li></a>
+                     </ul>
+                     <ul class="project_list"> /*data id ="id1" This makes the list in order*/
+                        <li data-id="id-1" data-type="incomplete">/*data-type="......" Data types are the category name*/
+                        	Content goes here                  
+                        </li>
+                        
+                        <li data-id="id-2" data-type="Resolved">
+                        	Content goes here                        
+                        </li>                                          
+                                                                                        
+                     </ul>
+                </div>
+            </pre>
+            JS
+            <pre class="brush: js;">
+		/*Project Sort*/
+	  // get the action filter option item on page load
+  var $filterType = $('.filter_project li.selected a').attr('class');
+	
+  // get and assign the ourHolder element to the
+	// $holder varible for use later
+  var $holder = $('ul.project_list');
+
+  // clone all items within the pre-assigned $holder element
+  var $data = $holder.clone();
+
+  // attempt to call Quicksand when a filter option
+	// item is clicked
+	$('.filter_project li a').click(function(e) {
+		// reset the active class on all the buttons
+		$('.filter_project li').removeClass('selected');
+		
+		// assign the class of the clicked filter option
+		// element to our $filterType variable
+		var $filterType = $(this).attr('class');
+		$(this).parent().addClass('selected');
+		
+		if ($filterType == 'all') {
+			// assign all li items to the $filteredData var when
+			// the 'All' filter option is clicked
+			var $filteredData = $data.find('li');
+		} 
+		else {
+			// find all li elements that have our required $filterType
+			// values for the data-type element
+			var $filteredData = $data.find('li[data-type=' + $filterType + ']');
+		}
+		
+		// call quicksand and assign transition parameters
+		$holder.quicksand($filteredData, {
+			duration: 800,
+			easing: 'easeInOutQuad'
+		});
+		return false;
+	});
+
+            </pre>
+            <a href="http://razorjack.net/quicksand/">Plugin Documentation</a> 
+
+        
+        </div>
+        
+               <!--NEXT-->
+        <br />
+        <div class="usage_code">
+        
+        <p class="title">WYSIWYG editor - CL Editor</p>
+            HTML
+            <pre class="brush: js;">
+            <div id="container">
+                	<textarea  id="wyswig" name="input"></textarea>
+                </div>
+            </pre>
+            JS
+            <pre class="brush: js;">
+			/*WYSWIG*/
+	$(function() {
+		editor = $("#wyswig").cleditor({width:"100%", height:"100%"});
+		$(window).resize();
+	}); 
+            </pre>
+            <a href="http://premiumsoftware.net/cleditor/">Plugin Documentation</a> 
+
+        
+        </div>
+        
+               <!--NEXT-->
+        <br />
+        <div class="usage_code">
+        
+        <p class="title">Uploader - Uploadify</p>
+            HTML
+            <pre class="brush: js;">
+            <div id="file_uploader">
+                	<input id="file_upload" type="file" name="file_upload" />  
+                </div>
+                <div class="action_bar">
+                    <a href="javascript:$('#file_upload').uploadifyUpload();" class="button small"><span class="iconsweet">o</span>Upload Files</a>
+                </div>
+            </pre>
+            JS
+            <pre class="brush: js;">
+	/*FILE UPLOAD*/
+	// <![CDATA[
+	  $('#file_upload').uploadify({
+		'uploader'  : './uploadify/uploadify.swf',
+		'script'    : './uploadify/uploadify.php',
+		'cancelImg' : './uploadify/cancel.png',
+		'folder'    : './uploads',	/*Destination Folder*/
+		'fileExt'   : '*.jpg;*.gif;*.png', /*These extenstion files*/
+		'multi'     : true,	  /*Multiple file upload option*/
+		'sizeLimit' : 400000 /*Here I have set the file size limit - 400KB*/
+	  });
+	// ]]>
+            </pre>
+            <a href="http://www.uploadify.com/">Plugin Documentation</a> 
+
+        
+        </div>
+        
+               <!--NEXT-->
+        <br />
+        <div class="usage_code">
+        
+        <p class="title">Code Highlighter</p>
+            HTML
+            <pre class="brush: js;">
+            	<pre class="code" lang="js">
+                        //code
+                 </pre>
+            </pre>
+            JS
+            <pre class="brush: js;">
+		$('pre.code').highlight({source:1, zebra:1, indent:'space', list:'ol'});
+
+            </pre>
+            <a href="http://webcodingstudio.com/blog/jquery-syntax-highlight-plugin">Plugin Documentation</a> 
+
+        
+        </div>   
+        
+        
+        <!--NEXT-->
+        <br />
+        <div class="usage_code">
+        <h3>jQuery UI</h3>
+        <p class="title">Slider</p>
+            HTML
+            <pre class="brush: js;">
+            	<div id="slider"></div>
+            </pre>
+            JS
+            <pre class="brush: js;">
+				/$( "#slider" ).slider();
+        	</pre>
+         <hr />
+        <p class="title">Progressbar</p>
+            HTML
+            <pre class="brush: js;">
+            	<div id="progressbar" style="height:100%;"></div>
+            </pre>
+            JS
+            <pre class="brush: js;">
+		/*Progress Bar*/
+		$( "#progressbar" ).progressbar({
+			value: 37
+		});
+        	</pre>
+         <hr />
+        <p class="title">Tabs</p>
+            HTML
+            <pre class="brush: js;">
+            	<div id="tabs"></div>
+            </pre>
+            JS
+            <pre class="brush: js;">
+		/*Tabs*/
+		
+		$( "#tabs" ).tabs();
+        	</pre>
+         <hr />     
+        <p class="title">Input Date picker</p>
+            HTML
+            <pre class="brush: js;">
+            	<input style="width:20%" type="text" id="datepicker">
+            </pre>
+            JS
+            <pre class="brush: js;">
+		/*Date Picker*/
+		$( "#datepicker" ).datepicker();
+          	</pre>
+         <hr />   
+        <p class="title">Inline Date picker</p>
+            HTML
+            <pre class="brush: js;">
+            	<div id="datepicker_inline"></div>
+            </pre>
+            JS
+            <pre class="brush: js;">
+			$( "#datepicker_inline" ).datepicker();
+          	</pre>
+         <hr />                     
+         
+		<a href="http://jqueryui.com/demos/">Plugin Documentation</a> 
+        
+        </div>  
+        
+        <!--NEXT-->
+        <br />
+        <div class="usage_code">
+        <p class="title">Tooltip</p>
+            HTML
+            <pre class="brush: js;">
+            	<a href="#" class="tip_east" title="Tip East">Tip East</a> /*title text will be the tip text*/
+                <a href="#" class="tip_west" title="Tip West">Tip West</a> /*title text will be the tip text*/
+                <a href="#" class="tip_north" title="Tip North">North</a> /*title text will be the tip text*/
+                <a href="#" class="tip_south" title="Tip South">South</a> /*title text will be the tip text*/
+            </pre>
+            JS
+            <pre class="brush: js;">
+            /*TIPSY*/
+            $(function() {
+                $('.tip_north').tipsy({gravity: 's'});
+                $('.tip_south').tipsy({gravity: 'n'});
+                $('.tip_east').tipsy({gravity: 'e'});
+                $('.tip_west').tipsy({gravity: 'w'});
+                $('.tip_north-west').tipsy({gravity: 'nw'});
+                $('.tip_north-east').tipsy({gravity: 'ne'});
+                $('.tip_south-west').tipsy({gravity: 'sw'});
+                $('.tip_south-east').tipsy({gravity: 'se'});
+            }); 
+        	</pre>
+         <hr />
+
+		<a href="http://onehackoranother.com/projects/jquery/tipsy/">Plugin Documentation</a> 
+        
+        </div>
+        
+        
+        <!--NEXT-->
+        <br />
+        <div class="usage_code">
+        <p class="title">Full Calendar</p>
+            HTML
+            <pre class="brush: js;">
+            	<div id="full_calendar"></div> 
+            </pre>
+            JS
+            <pre class="brush: js;">
+            /*Full Calendar*/
+            $('#full_calendar').fullCalendar();
+        	</pre>
+         <hr />
+
+		<a href="http://arshaw.com/fullcalendar/">Plugin Documentation</a> 
+        
+        </div>   
+        
+        
+        <!--NEXT-->
+        <br />
+        <div class="usage_code">
+        <p class="title">Bootstrap Modal Window</p>
+            HTML
+            <pre class="brush: js;">
+            	<a class="whitishBtn button_small" data-toggle="modal" href="#myModal" >Launch Basic Modal</a>  /*Hyperlink targeting the Modalwindow*/
+            </pre>
+            Target Window
+            <pre class="brush: js;">
+            	<!--Basic Modal Start-->
+	<div class="modal hide" id="myModal" >
+    <div class="modal-header">
+    <a class="close" data-dismiss="modal">×</a>
+    <h3>Modal header</h3>
+    </div>
+    <div class="modal-body">
+              <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+              <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+              <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+    </div>
+    <div class="modal-footer">
+    <a data-dismiss="modal" class="greyishBtn button_small" href="#">Close</a>
+    <a href="#" class="bluishBtn button_small">Save changes</a>
+    </div>
+    </div>
+    <!--Basic Modal End-->
+
+            </pre>
+            JS
+            <pre class="brush: js;">
+		/*Modal Window*/
+		$('#myModal').modal
+        	</pre>
+         <hr />
+
+		<a href="http://twitter.github.com/bootstrap/javascript.html#modals">Plugin Documentation</a> 
+        
+        </div>                  
+                       
+        <!--NEXT-->
+        
+	<div class="usage_code">
+        <p class="title">Data Table</p>
+            HTML
+            <pre class="brush: js;">
+            	<table cellpadding="0" cellspacing="0" border="0" class="display" id="jqtable"></table>
+            </pre>
+            JS
+            <pre class="brush: js;">
+			oTable = $('#jqtable').dataTable({
+					"bJQueryUI": true,
+					"sPaginationType": "full_numbers"
+			});
+        	</pre>
+         <hr />
+
+		<a href="http://datatables.net/">Plugin Documentation</a> 
+        
+        </div>             
+        
+        
+        
+        <h4>Sources and credits</h4>
+        <hr />
+        Font - <b>Corbel</b> <a target="_blank" href="http://fontzone.net/font-details/Corbel/">Download it here</a> <br />
+        Icons - <b>Iconsweet - Glyphs</b> <a target="_blank" href="http://iconsweets.com/">Download it here</a>
+        <div class="clear"></div>
+        <hr>
+        <p>Once again, thank you so much for purchasing this theme. I'd be glad to help you if you have any questions relating to this theme. If you have a more general question relating to the themes on ThemeForest, you might consider visiting the forums and asking your question in the "Item Discussion" section.</p>
+        <em>Rohith Paul</em>
+        <hr>
+    </section>
+</div>
+</body>
+</html>

@@ -1,0 +1,103 @@
+Ext.define('Ext.spectrumgrids.user',    
+{
+        extend: 'Ext.spectrumgrids', 
+        initComponent: function(config) 
+        {       
+            this.callParent(arguments);
+        },
+        
+         override_edit          :null
+        ,override_selectiochange:null
+        ,override_itemdblclick  :null
+        ,override_collapse      :null
+        ,override_expand        :null
+        
+        ,config                 :null
+        ,constructor : function(config) 
+        {   
+            
+            var me=this;
+            if(config.columns==null)
+            config.columns  =
+            [    
+                {
+                    text: "Firstname"
+                    ,dataIndex: 'person_fname'
+                    ,flex:1
+                }                
+                ,{
+                    text: "User"
+                    ,dataIndex: 'person_lname'
+                    ,flex:1
+                }
+            ];
+            //Fresh top/bottom components list
+            if(config.topItems==null)     config.topItems=[];
+            if(config.bottomLItems==null) config.bottomLItems=[];
+            if(config.bottomRItems==null) config.bottomRItems=[];
+            
+            config.topItems.push
+            (
+                 
+            );
+            config.bottomLItems.push
+            (
+                 
+            );
+            config.bottomRItems.push
+            (
+                 
+            );
+                                  
+             config.fields       = ['user_id','person_id','person_fname','person_lname','role_id','role_name'];
+             config.sorters      = config.fields;
+             if(config.pageSize==null)
+                config.pageSize     = 100;
+             if(config.url==null)
+                config.url          = "VOID";
+             config.extraParams  = {start:0,limit:config.pageSize};
+             config.width        = '100%';
+             config.height       = 350;
+             config.groupField   = "";
+             collapsible         = true;                     
+            
+            this.override_edit          =config.override_edit;
+            this.override_selectiochange=config.override_selectionchange;
+            this.override_itemdblclick  =config.override_itemdblclick;
+            this.override_collapse      =config.override_collapse;
+            this.override_expand        =config.override_expand;
+            
+            this.config=config;
+            this.callParent(arguments); 
+        }         
+        ,afterRender: function() 
+        {  
+            var me=this;
+            if(!this.override_edit)
+            {   
+                this.on("edit",function(e)
+                {   
+                }); 
+                
+            }
+            if(!this.override_selectionchange)                              
+            {   
+                this.on("selectionchange",function(sm,records)
+                {
+                    //if(records.length!=0) then use "records[0].data"   
+                    if(records.length!=0)                  
+                        me.selected_record=records[0].data
+                });
+            }
+            if(!this.override_collapse)                              
+            {   
+                this.on("collapse",function(){});
+            }
+            if(!this.override_expand)
+            {   
+                this.on("expand",function(){});
+            }                                 
+            
+            this.callParent(arguments);         
+        },
+});

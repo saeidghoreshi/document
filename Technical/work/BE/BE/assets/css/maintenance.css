@@ -1,0 +1,65 @@
+.bigtable{
+width:100%;
+border:1;
+
+
+
+}
+.cell
+{
+    
+   vertical-align: top;
+ /*  padding-bottom: 2em;*/
+}
+.half{
+    
+    width:50%;
+
+}
+
+.left{
+    
+float:left;
+}
+
+.center{
+text-align:center;
+}
+
+.label{
+    
+    font-weight: bold;
+
+/*    */
+}
+.right
+{
+	text-align:right;
+    float:right; 
+	
+}
+
+#categorybutton em {
+
+    font-style: normal;
+    display: block;
+    text-align: center;
+    vertical-align:text-top;
+    white-space: pre;
+
+    /*  Restrict the minimum width of the label */
+
+    width: 27em;
+
+    /* Hide the overflow if the text label exceeds  width. */
+
+    overflow: hidden;
+
+    /* 
+        IE and Safari support the ability to add ellipsis when the text 
+        label exceeds  width.
+    */
+
+    text-overflow: ellipsis;
+
+}

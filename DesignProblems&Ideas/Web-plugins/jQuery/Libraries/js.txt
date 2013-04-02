@@ -1,0 +1,12 @@
+
+
+
+for
+(1)absolute from document		use[left/top]
+(2)relative from parent container  	use[left/top]
+
+for
+(3)Nothing:
+
+
+box-shadow: inset 1px 1px 0 rgba(0,0,0,.1);

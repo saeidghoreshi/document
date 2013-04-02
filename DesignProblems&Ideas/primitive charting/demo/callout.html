@@ -1,0 +1,287 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Basic Primitives: bpCallout jQuery Widget Example</title>
+	<script type="text/javascript" src="demo/js/jquery/jquery-1.7.2.js"></script>
+	<script type="text/javascript" src="demo/js/jquery/jquery-ui-1.8.16.custom.min.js"></script>
+	<link href="demo/js/jquery/ui-lightness/jquery-ui-1.8.16.custom.css" media="screen" rel="stylesheet" type="text/css" />
+
+	<!-- jQuery UI Layout -->
+	<script type="text/javascript" src="demo/jquerylayout/jquery.layout-latest.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="demo/jquerylayout/layout-default-latest.css" />
+
+	<!-- CSS Drop Down Menu -->
+	<link href="demo/css/dropdown/dropdown.css" media="screen" rel="stylesheet" type="text/css" />
+	<link href="demo/css/dropdown/themes/default/default.ultimate.css" media="screen" rel="stylesheet" type="text/css" />
+
+	<script type="text/javascript">
+		jQuery(document).ready(function () {
+			jQuery('body').layout(
+			{
+				center__paneSelector: "#contentpanel"
+				, north__paneSelector: "#northpanel"
+				, north__resizable: false
+				, north__closable: false
+				, north__spacing_open: 0
+				, north__size: 40
+			});
+		});
+	</script>
+
+	<!-- header -->
+
+	<!-- # include file="src/src.primitives.html"-->
+
+	<link href="demo/css/primitives.latest.css?1029" media="screen" rel="stylesheet" type="text/css" />
+	<script  type="text/javascript" src="demo/js/primitives.min.js?1029"></script>
+
+
+	<script type="text/javascript">
+		var widget = null;
+
+		jQuery(document).ready(function () {
+			jQuery.ajaxSetup({
+				cache: false
+			});
+
+			jQuery('#contentpanel').layout(
+			{
+				center__paneSelector: "#centerpanel"
+				, west__size: 200
+				, west__paneSelector: "#westpanel"
+				, west__resizable: true
+				, center__onresize: function () {
+					if (widget != null) {
+						Update(jQuery("#centerpanel"));
+					}
+				}
+			});
+
+			// pointerPlacement
+			var pointerPlacement = jQuery("#pointerPlacement");
+			for (var key in primitives.common.PlacementType) {
+				var value = primitives.common.PlacementType[key];
+				pointerPlacement.append(jQuery("<br/><label><input name='pointerPlacement' type='radio' value='" + value + "' " + (value == primitives.common.PlacementType.Auto ? "checked" : "") + " />" + key + "</label>"));
+			};
+
+			jQuery("input:radio[name=pointerPlacement]").change(function () {
+				Update(jQuery("#centerpanel"));
+			});
+
+			// fillColor
+			var fillColor = jQuery("<select></select>");
+			jQuery("#fillColor").append(fillColor);
+			for (var key in primitives.common.Colors) {
+				var value = primitives.common.Colors[key];
+				fillColor.append(jQuery("<option value='" + value + "' " + (value == primitives.common.Colors.LightGray ? "selected" : "") + " >" + key + "</option>"));
+			};
+
+			jQuery("#fillColor").change(function () {
+				Update(jQuery("#centerpanel"));
+			});
+
+			// borderColor
+			var borderColor = jQuery("<select></select>");
+			jQuery("#borderColor").append(borderColor);
+			for (var key in primitives.common.Colors) {
+				var value = primitives.common.Colors[key];
+				borderColor.append(jQuery("<option value='" + value + "' " + (value == primitives.common.Colors.Black ? "selected" : "") + " >" + key + "</option>"));
+			};
+
+			jQuery("#borderColor").change(function () {
+				Update(jQuery("#centerpanel"));
+			});
+
+			// opacity
+			var opacities = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0];
+			var opacity = jQuery("<select></select>");
+			jQuery("#opacity").append(opacity);
+			for (var index = 0; index < opacities.length; index += 1) {
+				var value = opacities[index];
+				opacity.append(jQuery("<option value='" + value + "' " + (value == 1.0 ? "selected" : "") + " >" + value + "</option>"));
+			};
+
+			jQuery("#opacity").change(function () {
+				Update(jQuery("#centerpanel"));
+			});
+
+			// offset
+			var offsets = [-50, -20, -10, -5, 0, 5, 10, 20, 50];
+			var offset = jQuery("<select></select>");
+			jQuery("#offset").append(offset);
+			for (var index = 0; index < offsets.length; index += 1) {
+				var value = offsets[index];
+				offset.append(jQuery("<option value='" + value + "' " + (value == 0 ? "selected" : "") + " >" + value + "</option>"));
+			};
+
+			jQuery("#offset").change(function () {
+				Update(jQuery("#centerpanel"));
+			});
+
+
+			// cornerRadius
+			var cornerRadiuses = ["0%", "5%", "10%", "20%", 0, 5, 10, 20, 50];
+			var cornerRadius = jQuery("<select></select>");
+			jQuery("#cornerRadius").append(cornerRadius);
+			for (var index = 0; index < cornerRadiuses.length; index += 1) {
+				var value = cornerRadiuses[index];
+				cornerRadius.append(jQuery("<option value='" + value + "' " + (value == "20%" ? "selected" : "") + " >" + value + "</option>"));
+			};
+
+			jQuery("#cornerRadius").change(function () {
+				Update(jQuery("#centerpanel"));
+			});
+
+			// pointerWidth
+			var pointerWidths = ["0%", "5%", "10%", "20%", 0, 5, 10, 20, 50];
+			var pointerWidth = jQuery("<select></select>");
+			jQuery("#pointerWidth").append(pointerWidth);
+			for (var index = 0; index < pointerWidths.length; index += 1) {
+				var value = pointerWidths[index];
+				pointerWidth.append(jQuery("<option value='" + value + "' " + (value == "20%" ? "selected" : "") + " >" + value + "</option>"));
+			};
+
+			jQuery("#pointerWidth").change(function () {
+				Update(jQuery("#centerpanel"));
+			});
+
+			// lineWidth
+			var lineWidths = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+			var lineWidth = jQuery("<select></select>");
+			jQuery("#lineWidth").append(lineWidth);
+			for (var index = 0; index < lineWidths.length; index += 1) {
+				var value = lineWidths[index];
+				lineWidth.append(jQuery("<option value='" + value + "' " + (value == 2 ? "selected" : "") + " >" + value + "</option>"));
+			};
+
+			jQuery("#lineWidth").change(function () {
+				Update(jQuery("#centerpanel"));
+			});
+
+			// graphicsType
+			var graphicsType = jQuery("#graphicsType");
+			for (var key in primitives.common.GraphicsType) {
+				var value = primitives.common.GraphicsType[key];
+				graphicsType.append(jQuery("<br/><label><input name='graphicsType' type='radio' value='" + value + "' " + (value == primitives.common.GraphicsType.SVG ? "checked" : "") + " />" + key + "</label>"));
+			};
+
+			jQuery("input:radio[name=graphicsType]").change(function () {
+				Update(jQuery("#centerpanel"), true);
+			});
+
+			Setup(jQuery("#centerpanel"));
+
+			jQuery("#centerpanel").mousemove(function (event) {
+				var selector = jQuery("#centerpanel");
+				var x = event.pageX - selector.offset().left;
+				var y = event.pageY - selector.offset().top;
+
+				selector.bpCallout("option", {
+					"snapPoint": new primitives.common.Point(x, y)
+				});
+				selector.bpCallout("update");
+			});
+
+		});
+
+		function ShowGraphicsType(graphicsType) {
+			var result = null;
+
+			switch (graphicsType) {
+				case primitives.common.GraphicsType.SVG:
+					result = "SVG";
+					break;
+				case primitives.common.GraphicsType.Canvas:
+					result = "Canvas";
+					break;
+				case primitives.common.GraphicsType.VML:
+					result = "VML";
+					break;
+			}
+			jQuery("#actualGraphicsType").empty().append("Graphics Type: " + result);
+		}
+
+		function Setup(selector) {
+			widget = selector.bpCallout(GetConfig());
+
+			ShowGraphicsType(selector.bpCallout("option", "actualGraphicsType"));
+		}
+
+		function Update(selector, recreate) {
+			selector.bpCallout("option", GetConfig());
+			selector.bpCallout("update", recreate);
+
+			ShowGraphicsType(selector.bpCallout("option", "actualGraphicsType"));
+		}
+
+		function GetConfig() {
+			var graphicsType = parseInt(jQuery("input:radio[name=graphicsType]:checked").val(), 10);
+			var pointerPlacement = parseInt(jQuery("input:radio[name=pointerPlacement]:checked").val(), 10);
+			var fillColor = jQuery("#fillColor option:selected").val();
+			var borderColor = jQuery("#borderColor option:selected").val();
+
+			var offset = parseInt(jQuery("#offset option:selected").val(), 10);
+			var cornerRadius = jQuery("#cornerRadius option:selected").val();
+			var pointerWidth = jQuery("#pointerWidth option:selected").val();
+			var lineWidth = parseInt(jQuery("#lineWidth option:selected").val(), 10);
+			var opacity = parseFloat(jQuery("#opacity option:selected").val());
+
+			var panel = jQuery("#centerpanel");
+			var panelSize = new primitives.common.Rect(0, 0, panel.innerWidth(), panel.innerHeight());
+			var position = new primitives.common.Rect(panelSize.width / 4, panelSize.height / 4, panelSize.width / 2, panelSize.height / 2);
+
+			return {
+				graphicsType: graphicsType,
+				pointerPlacement: pointerPlacement,
+				fillColor: fillColor,
+				borderColor: borderColor,
+				offset: offset,
+				cornerRadius: cornerRadius,
+				pointerWidth: pointerWidth,
+				position: position,
+				lineWidth: lineWidth,
+				opacity: opacity
+			};
+		}
+	</script>
+	<!-- /header -->
+</head>
+<body style="font-size:12px">
+	<div id="contentpanel" style="padding: 0px;">
+		<!--bpcontent-->
+		<div id="westpanel" style="padding: 0px; margin: 0px; border-style: solid; font-size: 12px; overflow: scroll;">
+			<h2>Callout Shape</h2>
+			<p>This is helper jQuery UI widget draws callout shape in all major graphics formats: SVG, Canvas & VML. </p>
+			<p id="pointerPlacement">Pointer placement</p>
+			<p id="fillColor">Fill color:&nbsp;</p>
+			<p id="borderColor">Border color:&nbsp;</p>
+			<p id="opacity">Opacity:&nbsp;</p>
+			<p id="lineWidth">Line width:&nbsp;</p>
+			<p id="offset">Offset:&nbsp;</p>
+			<p id="cornerRadius">Corner radius:&nbsp;</p>
+			<p id="pointerWidth">Pointer width:&nbsp;</p>
+			<p id="graphicsType"></p>
+			<p id="actualGraphicsType"></p>
+		</div>
+		<div id="centerpanel" style="padding: 0px; margin: 0px; overflow: hidden;">
+		</div>
+		<!--/bpcontent-->
+	</div>
+	<div id="northpanel" style="padding: 0px; margin: 0px;">
+		<ul id="nav" class="dropdown dropdown-horizontal">
+			<li><a href="index.html">Navigation</a></li>
+            <li><a href="orientation.html">Chart Orientation</a></li>
+			<li><a href="crossteamgroup.html">Cross Team Group</a></li>
+			<li><a href="verticallayout.html">Vertical Children Layout</a></li>
+			<li><a href="directreports40.html">Chart Editor</a></li>
+			<li><a href="resize.html">Misc</a></li>
+			<li><a href="bootstrap.html">Bootstrap</a></li>
+			<li><a href="phpdemo.php">PHP Demo</a></li>
+			<li><a href="text.html">Text</a></li>
+			<li><a href="callout.html">Callout</a></li>
+		</ul>
+	</div>
+</body>
+</html>

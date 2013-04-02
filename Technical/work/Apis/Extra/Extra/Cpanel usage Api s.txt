@@ -1,0 +1,69 @@
+ /*
+        $total_result='';
+        ///*
+        $module="Fileman";
+        $func="fmmkdir";
+        $args="<args>/home/wwwssi/public_html/websites/multisites</args><args>$realname</args>";
+        $total_result.=$this->request_cpanel_v1($module,$func,$args);
+        
+        ///* Copy pasts from sample site
+        $module="Fileman";
+        $func="dofileop";
+        $args="<args>/home/wwwssi/public_html/websites/multisites/y/</args><args>*</args><args>/home/wwwssi/public_html/websites/multisites/$realname/</args><args>copy</args>";
+        $total_result.=$this->request_cpanel_v1($module,$func,$args);
+        ///*
+        ///*  create Image Dir
+        $module="Fileman";
+        $func="delfile";
+        $args="<args>/home/wwwssi/public_html/websites/multisites/$realname</args><args>images</args>";
+        $total_result.=$this->request_cpanel_v1($module,$func,$args);
+        
+        $module="Fileman";
+        $func="fmmkdir";
+        $args="<args>/home/wwwssi/public_html/websites/multisites/$realname</args><args>images</args>";
+        $total_result.=$this->request_cpanel_v1($module,$func,$args);
+        
+        $module="Fileman";
+        $func="fmmkdir";
+        $args="<args>/home/wwwssi/public_html/websites/multisites/$realname/images</args><args>banners</args>";
+        $total_result.=$this->request_cpanel_v1($module,$func,$args);
+        
+        /////////                                       
+        $this->changeper($realname,"configuration.php");
+        $this->changeper($realname,"config_multisites.php");
+        /////////
+        $module="SubDomain";
+        $func="addsubdomain";
+        $args="<args>$realname</args><args>websites.servilliansolutionsinc.com</args><args>0</args><args>0</args><args>/public_html/websites/multisites/$realname/</args>";
+        $total_result.=$this->request_cpanel_v1($module,$func,$args);
+        //
+        //
+        $this->create_park($virtualname.'.'.$maindomain,$realname);
+        //
+        //Database
+        //
+        $module="Mysql";
+        $func="adddb";
+        $args="<args>DB$realname</args>";
+        $total_result.=$this->request_cpanel_v1($module,$func,$args);
+        //
+        
+      
+        
+        $this->load->helper("file");
+        
+        $Handle = fopen("assets/config_files/$realname.configuration.php", 'w');
+        $Data = str_replace(array("XSAMPLEX","XSITENAMEX"),array($realname,$leaguename) ,read_file("assets/config_files/configuration_sample.php"));
+        fwrite($Handle, $Data);  
+        fclose($Handle);                                                        
+        
+        $Handle = fopen("assets/config_files/$realname.config_multisites.php", 'w');
+        $Data = str_replace("XSAMPLEX",$realname,read_file("assets/config_files/config_multisites_sample.php"));
+        fwrite($Handle, $Data);  
+        fclose($Handle);                                                        
+                                             
+        
+        $total_result.=$this->ftp_files("assets/config_files/$realname.configuration.php","multisites/$realname/configuration.php",'websites.servilliansolutionsinc.com',"ryanmaster","j1135#weep");
+        $total_result.=$this->ftp_files("assets/config_files/$realname.config_multisites.php","multisites/$realname/config_multisites.php",'websites.servilliansolutionsinc.com',"ryanmaster","j1135#weep");
+        return $total_result;
+        */

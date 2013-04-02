@@ -1,0 +1,23 @@
+*************************************september 8th
+<<<database SP>>>
+finance.new_motion_assignment
+website.new_ampaign
+website.update_campaign
+finance.setup_account
+get_charge_types
+
+apply_tax_invoice_draft
+apply_tax_invoice
+
+
+
+<<<Table Changes>>>
+lu_charge_type [internal_only] Default=false
+
+*************************************september 8th
+
+
+
+
+
+public.get_org_type

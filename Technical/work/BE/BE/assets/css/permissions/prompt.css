@@ -1,0 +1,10 @@
+#dialog.div.bd    
+{
+    overflow:hidden !important  ;
+    padding:4px !important ;
+    border:1px solid #aeaeae !important   ;
+    background-color:#FFF !important   ;
+    text-align: center !important   ;
+    font-size: 15px !important   ;
+}
+

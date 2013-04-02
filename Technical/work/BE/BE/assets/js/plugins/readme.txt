@@ -1,0 +1,1 @@
+Standalone plugins for spectrum (like shadowbox).

@@ -1,0 +1,437 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>jQuery Widget Organizational Chart Cross Functional Team Demo</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="text/javascript" src="demo/js/jquery/jquery-1.7.2.js"></script>
+	<script type="text/javascript" src="demo/js/jquery/jquery-ui-1.8.16.custom.min.js"></script>
+	<link href="demo/js/jquery/ui-lightness/jquery-ui-1.8.16.custom.css" media="screen" rel="stylesheet" type="text/css" />
+
+	<!-- jQuery UI Layout -->
+	<script type="text/javascript" src="demo/jquerylayout/jquery.layout-latest.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="demo/jquerylayout/layout-default-latest.css" />
+
+	<!-- CSS Drop Down Menu -->
+	<link href="demo/css/dropdown/dropdown.css" media="screen" rel="stylesheet" type="text/css" />
+	<link href="demo/css/dropdown/themes/default/default.ultimate.css" media="screen" rel="stylesheet" type="text/css" />
+
+	<script type="text/javascript">
+		jQuery(document).ready(function () {
+			jQuery('body').layout(
+			{
+				center__paneSelector: "#contentpanel"
+				, north__paneSelector: "#northpanel"
+				, north__resizable: false
+				, north__closable: false
+				, north__spacing_open: 0
+				, north__size: 40
+			});
+		});
+	</script>
+
+	<!-- header -->
+
+	<!-- # include file="src/src.primitives.html"-->
+
+	<link href="demo/css/primitives.latest.css?1029" media="screen" rel="stylesheet" type="text/css" />
+	<script  type="text/javascript" src="demo/js/primitives.min.js?1029"></script>
+
+	<script type="text/javascript" src="demo/js/demodata.js?2"></script>
+
+	<script type="text/javascript">
+		var orgDiagram = null;
+		var treeItems = {};
+		var contextidcounter = 0;
+		var currentHighlightDataTreeItem = null;
+		var currentCursorDataTreeItem = null;
+
+		jQuery(document).ready(function () {
+			jQuery.ajaxSetup({
+				cache: false
+			});
+
+			jQuery('#contentpanel').layout(
+			{
+				center__paneSelector: "#centerpanel"
+				, south__paneSelector: "#southpanel"
+				, south__resizable: false
+				, south__closable: false
+				, south__spacing_open: 0
+				, south__size: 50
+				, west__size: 200
+				, west__paneSelector: "#westpanel"
+				, west__resizable: true
+				, center__onresize: function () {
+					if (orgDiagram != null) {
+						jQuery("#centerpanel").orgDiagram("update", primitives.orgdiagram.UpdateMode.Refresh);
+					}
+				}
+			});
+
+			/* Page Fit Mode */
+			var pageFitModes = jQuery("#pageFitMode");
+			for (var key in primitives.orgdiagram.PageFitMode) {
+				var value = primitives.orgdiagram.PageFitMode[key];
+				pageFitModes.append(jQuery("<br/><label><input name='pageFitMode' type='radio' value='" + value + "' " + (value == primitives.orgdiagram.PageFitMode.FitToPage ? "checked" : "") + " />" + key + "</label>"));
+			};
+
+			jQuery("input:radio[name=pageFitMode]").change(function () {
+				Update(jQuery("#centerpanel"), primitives.orgdiagram.UpdateMode.Refresh);
+			});
+
+		    /* Orientation Type */
+			var orientationTypes = jQuery("#orientationType");
+			for (var key in primitives.orgdiagram.OrientationType) {
+			    var value = primitives.orgdiagram.OrientationType[key];
+			    orientationTypes.append(jQuery("<br/><label><input name='orientationType' type='radio' value='" + value + "' " + (value == primitives.orgdiagram.OrientationType.Left ? "checked" : "") + " />" + key + "</label>"));
+			};
+
+			jQuery("input:radio[name=orientationType]").change(function () {
+			    Update(jQuery("#centerpanel"), primitives.orgdiagram.UpdateMode.Refresh);
+			});
+
+		    /* Horizontal Alignmnet */
+			var horizontalAlignments = jQuery("#horizontalAlignment");
+			for (var key in primitives.common.HorizontalAlignmentType) {
+			    var value = primitives.common.HorizontalAlignmentType[key];
+			    horizontalAlignments.append(jQuery("<br/><label><input name='horizontalAlignment' type='radio' value='" + value + "' " + (value == primitives.common.HorizontalAlignmentType.Left ? "checked" : "") + " />" + key + "</label>"));
+			};
+
+			jQuery("input:radio[name=horizontalAlignment]").change(function () {
+			    Update(jQuery("#centerpanel"), primitives.orgdiagram.UpdateMode.Refresh);
+			});
+
+		    /* Connector Type */
+			var connectorTypes = jQuery("#connectorType");
+			for (var key in primitives.orgdiagram.ConnectorType) {
+			    var value = primitives.orgdiagram.ConnectorType[key];
+			    connectorTypes.append(jQuery("<br/><label><input name='connectorType' type='radio' value='" + value + "' " + (value == primitives.orgdiagram.ConnectorType.Curved ? "checked" : "") + " />" + key + "</label>"));
+			};
+
+			jQuery("input:radio[name=connectorType]").change(function () {
+			    Update(jQuery("#centerpanel"), primitives.orgdiagram.UpdateMode.Refresh);
+			});
+
+			/* Items Minimial Visibility */
+			var pageFitModes = jQuery("#minimalVisibility");
+			for (var key in primitives.orgdiagram.Visibility) {
+				var value = primitives.orgdiagram.Visibility[key];
+				pageFitModes.append(jQuery("<br/><label><input name='minimalVisibility' type='radio' value='" + value + "' " + (value == primitives.orgdiagram.Visibility.Dot ? "checked" : "") + " />" + key + "</label>"));
+			};
+
+			jQuery("input:radio[name=minimalVisibility]").change(function () {
+				Update(jQuery("#centerpanel"), primitives.orgdiagram.UpdateMode.Refresh);
+			});
+
+			/* Selection Path Mode */
+			var selectionPathModes = jQuery("#selectionPathMode");
+			for (var key in primitives.orgdiagram.SelectionPathMode) {
+				var value = primitives.orgdiagram.SelectionPathMode[key];
+				selectionPathModes.append(jQuery("<br/><label><input name='selectionPathMode' type='radio' value='" + value + "' " + (value == primitives.orgdiagram.SelectionPathMode.FullStack ? "checked" : "") + " />" + key + "</label>"));
+			};
+
+			jQuery("input:radio[name=selectionPathMode]").change(function () {
+				Update(jQuery("#centerpanel"), primitives.orgdiagram.UpdateMode.Refresh);
+			});
+
+			/* Leaves Placement Type */
+			var leavesPlacementType = jQuery("#leavesPlacementType");
+			for (var key in primitives.orgdiagram.ChildrenPlacementType) {
+				var value = primitives.orgdiagram.ChildrenPlacementType[key];
+				leavesPlacementType.append(jQuery("<br/><label><input name='leavesPlacementType' type='radio' value='" + value + "' " + (value == primitives.orgdiagram.ChildrenPlacementType.Horizontal ? "checked" : "") + " />" + key + "</label>"));
+			};
+
+			jQuery("input:radio[name=leavesPlacementType]").change(function () {
+				Update(jQuery("#centerpanel"), primitives.orgdiagram.UpdateMode.Refresh);
+			});
+
+			/* Has Selection Checkbox */
+			var hasSelectorCheckbox = jQuery("#hasSelectorCheckbox");
+			for (var key in primitives.common.Enabled) {
+				var value = primitives.common.Enabled[key];
+				hasSelectorCheckbox.append(jQuery("<br/><label><input name='hasSelectorCheckbox' type='radio' value='" + value + "' " + (value == primitives.common.Enabled.True ? "checked" : "") + " />" + key + "</label>"));
+			};
+
+			jQuery("input:radio[name=hasSelectorCheckbox]").change(function () {
+				Update(jQuery("#centerpanel"), primitives.orgdiagram.UpdateMode.Refresh);
+			});
+
+			/* Has User Buttons */
+			var hasButtons = jQuery("#hasButtons");
+			for (var key in primitives.common.Enabled) {
+				var value = primitives.common.Enabled[key];
+				hasButtons.append(jQuery("<br/><label><input name='hasButtons' type='radio' value='" + value + "' " + (value == primitives.common.Enabled.Auto ? "checked" : "") + " />" + key + "</label>"));
+			};
+
+			jQuery("input:radio[name=hasButtons]").change(function () {
+				Update(jQuery("#centerpanel"), primitives.orgdiagram.UpdateMode.Refresh);
+			});
+
+			/* Setup & Load */
+			orgDiagram = Setup(jQuery("#centerpanel"));
+
+			LoadItems(jQuery("#centerpanel"));
+		});
+
+		function Setup(selector) {
+			return selector.orgDiagram(GetOrgDiagramConfig());
+		}
+
+		function Update(selector, updateMode) {
+			selector.orgDiagram("option", GetOrgDiagramConfig());
+			selector.orgDiagram("update", updateMode);
+		}
+
+		function GetOrgDiagramConfig() {
+		    var pageFitMode = parseInt(jQuery("input:radio[name=pageFitMode]:checked").val(), 10);
+		    var orientationType = parseInt(jQuery("input:radio[name=orientationType]:checked").val(), 10);
+		    var horizontalAlignment = parseInt(jQuery("input:radio[name=horizontalAlignment]:checked").val(), 10);
+			var minimalVisibility = parseInt(jQuery("input:radio[name=minimalVisibility]:checked").val(), 10);
+			var selectionPathMode = parseInt(jQuery("input:radio[name=selectionPathMode]:checked").val(), 10);
+			var leavesPlacementType = parseInt(jQuery("input:radio[name=leavesPlacementType]:checked").val(), 10);
+			var hasSelectorCheckbox = parseInt(jQuery("input:radio[name=hasSelectorCheckbox]:checked").val(), 10);
+			var hasButtons = parseInt(jQuery("input:radio[name=hasButtons]:checked").val(), 10);
+			var connectorType = parseInt(jQuery("input:radio[name=connectorType]:checked").val(), 10);
+
+			var photoTemplateCheckbox = jQuery("#photoTemplate").prop("checked");
+			var contactTemplateCheckbox = jQuery("#contactTemplate").prop("checked");
+
+			var buttons = [];
+			buttons.push(new primitives.orgdiagram.ButtonConfig("delete", "ui-icon-close", "Delete"));
+			buttons.push(new primitives.orgdiagram.ButtonConfig("properties", "ui-icon-gear", "Info"));
+			buttons.push(new primitives.orgdiagram.ButtonConfig("add", "ui-icon-person", "Add"));
+
+			var templates = [];
+			templates.push(getContactTemplate());
+
+			return {
+			    pageFitMode: pageFitMode,
+			    orientationType: orientationType,
+			    horizontalAlignment: horizontalAlignment,
+			    connectorType: connectorType,
+				minimalVisibility: minimalVisibility,
+				hasSelectorCheckbox: hasSelectorCheckbox,
+				selectionPathMode: selectionPathMode,
+				leavesPlacementType: leavesPlacementType,
+				hasButtons: hasButtons,
+				buttons: buttons,
+				templates: templates,
+				onButtonClick: onButtonClick,
+				onCursorChanging: onCursorChanging,
+				onCursorChanged: onCursorChanged,
+				onHighlightChanging: onHighlightChanging,
+				onHighlightChanged: onHighlightChanged,
+				onSelectionChanging: onSelectionChanging,
+				onSelectionChanged: onSelectionChanged,
+				onItemRender: onTemplateRender,
+				itemTitleFirstFontColor: primitives.common.Colors.White,
+				itemTitleSecondFontColor: primitives.common.Colors.White
+			};
+		}
+
+		function getContactTemplate() {
+			var result = new primitives.orgdiagram.TemplateConfig();
+			result.name = "contactTemplate";
+
+			result.itemSize = new primitives.common.Size(220, 120);
+			result.minimizedItemSize = new primitives.common.Size(3, 3);
+			result.highlightPadding = new primitives.common.Thickness(2, 2, 2, 2);
+
+
+			var itemTemplate = jQuery(
+			  '<div class="bp-item bp-corner-all bt-item-frame">'
+				+ '<div name="titleBackground" class="bp-item bp-corner-all bp-title-frame" style="top: 2px; left: 2px; width: 216px; height: 20px;">'
+					+ '<div name="title" class="bp-item bp-title" style="top: 3px; left: 6px; width: 208px; height: 18px;">'
+					+ '</div>'
+				+ '</div>'
+				+ '<div class="bp-item bp-photo-frame" style="top: 26px; left: 2px; width: 50px; height: 60px;">'
+					+ '<img name="photo" style="height=60px; width=50px;" />'
+				+ '</div>'
+				+ '<div name="phone" class="bp-item" style="top: 26px; left: 56px; width: 162px; height: 18px; font-size: 12px;"></div>'
+				+ '<div name="email" class="bp-item" style="top: 44px; left: 56px; width: 162px; height: 18px; font-size: 12px;"></div>'
+				+ '<div name="description" class="bp-item" style="top: 62px; left: 56px; width: 162px; height: 36px; font-size: 10px;"></div>'
+			+ '</div>'
+			).css({
+				width: result.itemSize.width + "px",
+				height: result.itemSize.height + "px"
+			});
+			result.itemTemplate = itemTemplate.wrap('<div>').parent().html();
+
+			return result;
+		}
+
+		function onTemplateRender(event, data) {
+			switch (data.renderingMode) {
+				case primitives.common.RenderingMode.Create:
+					/* Initialize widgets here */
+					break;
+				case primitives.common.RenderingMode.Update:
+					/* Update widgets here */
+					break;
+			}
+
+			var itemConfig = data.context;
+
+			switch (data.templateName) {
+				case "contactTemplate":
+					data.element.find("[name=photo]").attr({ "src": itemConfig.image });
+					data.element.find("[name=titleBackground]").css({ "background": itemConfig.itemTitleColor });
+
+					var fields = ["title", "description", "phone", "email"];
+					for (var index = 0; index < fields.length; index += 1) {
+						var field = fields[index];
+						data.element.find("[name=" + field + "]").text(itemConfig[field])
+					}
+					break;
+			}
+		}
+
+		function onSelectionChanging(e, data) {
+			var selectedItems = jQuery("#centerpanel").orgDiagram("option", "selectedItems");
+			var message = "";
+			for (var index = 0; index < selectedItems.length; index += 1) {
+				var itemConfig = selectedItems[index];
+				itemConfig.templateName = null;
+				itemConfig.groupTitle = null;
+				itemConfig.groupTitleColor = null;
+			}
+		}
+
+		function onSelectionChanged(e, data) {
+			var selectedItems = jQuery("#centerpanel").orgDiagram("option", "selectedItems");
+			var message = "";
+			for (var index = 0; index < selectedItems.length; index += 1) {
+				var itemConfig = selectedItems[index];
+				itemConfig.templateName = "contactTemplate";
+				itemConfig.groupTitle = "General Audit";
+				itemConfig.groupTitleColor = "Green";
+
+				if (message != "") {
+					message += ", ";
+				}
+				message += "<b>'" + itemConfig.title + "'</b>";
+			}
+			message += (data.parentItem != null ? " Parent item <b>'" + data.parentItem.title + "'" : "");
+			jQuery("#southpanel").empty().append("User selected next items: " + message);
+		}
+
+		function onHighlightChanging(e, data) {
+			var message = (data.context != null) ? "User is hovering mouse over item <b>'" + data.context.title + "'</b>." : "";
+			message += (data.parentItem != null ? " Parent item <b>'" + data.parentItem.title + "'" : "");
+
+			jQuery("#southpanel").empty().append(message);
+		}
+
+		function onHighlightChanged(e, data) {
+			var message = (data.context != null) ? "User hovers mouse over item <b>'" + data.context.title + "'</b>." : "";
+			message += (data.parentItem != null ? " Parent item <b>'" + data.parentItem.title + "'" : "");
+
+			jQuery("#southpanel").empty().append(message);
+		}
+
+		function onCursorChanging(e, data) {
+			var message = "User is clicking on item '" + data.context.title + "'.";
+			message += (data.parentItem != null ? " Parent item <b>'" + data.parentItem.title + "'" : "");
+
+			jQuery("#southpanel").empty().append(message);
+		}
+
+		function onCursorChanged(e, data) {
+			var message = "User clicked on item '" + data.context.title + "'.";
+			message += (data.parentItem != null ? " Parent item <b>'" + data.parentItem.title + "'" : "");
+			jQuery("#southpanel").empty().append(message);
+		}
+
+		function onButtonClick(e, data) {
+			var message = "User clicked <b>'" + data.name + "'</b> button for item <b>'" + data.context.title + "'</b>.";
+			message += (data.parentItem != null ? " Parent item <b>'" + data.parentItem.title + "'" : "");
+			jQuery("#southpanel").empty().append(message);
+		}
+
+
+		var selectedNames = ["Celestina Crum", "John Green", "Ashley Caudill", "Stephen Lowe", "Andrew Plourde", "Jessica Goodwin", "Byron Irons"];
+		var selectedItems = [];
+		function LoadItems(selector) {
+
+			var rootItem = getTreeItem(data);
+
+			rootItem.templateName = "contactTemplate";
+
+			selector.orgDiagram("option", {
+				rootItem: rootItem,
+				cursorItem: rootItem,
+				selectedItems: selectedItems
+			});
+			selector.orgDiagram("update");
+		}
+
+		var fields = ["title", "description", "phone", "email", "itemTitleColor", "groupTitle", "groupTitleColor", "templateName"];
+		function getTreeItem(sourceItem) {
+			var result = new primitives.orgdiagram.ItemConfig();
+
+			for (var index = 0; index < fields.length; index += 1) {
+				var field = fields[index];
+				if (sourceItem[field] != null) {
+					result[field] = sourceItem[field];
+				}
+			}
+			result.image = "demo/images/photos/" + sourceItem.image;
+			if (sourceItem.items != null) {
+				for (var index = 0; index < sourceItem.items.length; index += 1) {
+					result.items.push(getTreeItem(sourceItem.items[index]));
+				}
+			}
+
+			if (jQuery.inArray(result.title, selectedNames) >= 0) {
+				selectedItems.push(result);
+				result.templateName = "contactTemplate";
+				result.groupTitle = "General Audit";
+				result.groupTitleColor = "Green";
+			}
+			return result;
+		}
+
+	</script>
+	<!-- /header -->
+</head>
+<body style="font-size:12px">
+	<div id="contentpanel" style="padding: 0px;">
+		<!--bpcontent-->
+		<div id="westpanel" style="padding: 0px; margin: 0px; border-style: solid; font-size: 12px; border-color: grey; border-width: 1px; overflow: scroll;">
+			<h2>Cross Functional Team</h2>
+			<p>This Organization Chart shows members of cross functional team "General Audit" and their mutual positions in organization over general view of hierarchy.</p>
+			<p>Organization Chart provides options to show or hide items between root and cross team group members.</p>
+            <p>Chart demonstrates rotated chart hierarchy to the left side as well.</p>
+			<p id="pageFitMode">Page Fit Mode</p>
+            <p id="orientationType">Orientation</p>
+            <p id="horizontalAlignment">Items Horizontal Alignment</p>
+            <p id="connectorType">Connectors</p>
+			<p id="minimalVisibility">Minimal nodes visibility</p>
+			<p id="selectionPathMode">Selection Path Mode</p>
+			<p id="leavesPlacementType">Leaves placement</p>
+			<p id="hasButtons">User buttons</p>
+			<p id="hasSelectorCheckbox">Selection check box</p>
+		</div>
+		<div id="centerpanel" style="overflow: hidden; padding: 0px; margin: 0px; border: 0px;">
+		</div>
+		<div id="southpanel">
+		</div>
+		<!--/bpcontent-->
+	</div>
+	<div id="northpanel" style="padding: 0px; margin: 0px;">
+		<ul id="nav" class="dropdown dropdown-horizontal">
+			<li><a href="index.html">Navigation</a></li>
+            <li><a href="orientation.html">Chart Orientation</a></li>
+			<li><a href="crossteamgroup.html">Cross Team Group</a></li>
+			<li><a href="verticallayout.html">Vertical Children Layout</a></li>
+			<li><a href="directreports40.html">Chart Editor</a></li>
+			<li><a href="resize.html">Misc</a></li>
+			<li><a href="bootstrap.html">Bootstrap</a></li>
+			<li><a href="phpdemo.php">PHP Demo</a></li>
+			<li><a href="text.html">Text</a></li>
+			<li><a href="callout.html">Callout</a></li>
+		</ul>
+	</div>
+</body>
+</html>

@@ -1,0 +1,300 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>jQuery: Customizable layout using drag and drop (examples) - 3. Implementation in a real design</title>
+	<link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="../devheart-examples.css" media="screen" />
+</head>
+<body class="dhe-body">
+
+<div id="site-wrapper">
+
+	<div id="dhe-article-info">
+		<h1 class="dhe-h1">jQuery: Customizable layout using drag and drop (examples)</h1>
+		<p class="dhe-p dhe-large">Examples for the article <a href="http://devheart.org/articles/jquery-customizable-layout-using-drag-and-drop/" class="dhe-link">jQuery: Customizable layout using drag and drop</a> by <a href="http://devheart.org/" class="dhe-link">DevHeart</a>.</p>
+		<div id="dhe-step-navigation">
+			<div class="dhe-left">
+				<select onchange="parent.location=this.options[selectedIndex].value" class="dhe-select" id="dhe-step-dropdown">
+					<option value="../1-getting-started-with-sortable-lists/index.html">1. Getting started with sortable lists</option>
+					<option value="../2-saving-and-loading-items/index.html">2. Saving and loading items</option>
+					<option value="../3-implementation-in-a-real-design/index.html" selected="selected">3. Implementation in a real design</option>
+				</select>
+			</div>
+			<div class="dhe-right">
+				<a href="../2-saving-and-loading-items/index.html" class="dhe-link">&laquo; Previous</a>
+			</div>
+			<div class="dhe-clearer">&nbsp;</div>
+		</div>
+	</div>	
+
+	<div class="dhe-example-section" id="ex-3">
+		<div class="dhe-example-section-header">
+			<h3 class="dhe-h3 dhe-example-title">Example 3: Implementation in a real design</h3>
+			<div class="dhe-example-description">Positions of the top elements (&quot;Mission Statement&quot;, &quot;Next Event&quot;, &quot;Follow Us&quot;) and elements in the sidebar are customizable (<strong class="dhe-strong">click and drag on the titles</strong>). Positions are saved using cookies, you can refresh your browser to see that it works (cookies needs to be enabled).</div>
+		</div>
+		<div class="dhe-example-section-content">
+
+			<!-- BEGIN: XHTML for example 3 -->
+
+			<div id="example-3">
+
+				<div id="header">
+
+					<div id="top">
+
+						<div class="left" id="logo">
+							<a href="index.html"><img src="img/logo.gif" alt="" /></a>
+						</div>
+
+						<div class="left navigation" id="main-nav">
+
+							<ul class="tabbed">
+								<li class="current-tab"><a href="index.html">Blog</a></li>
+								<li><a href="#">Events</a></li>
+								<li><a href="#">About</a></li>
+								<li><a href="#">Archives</a></li>
+								<li><a href="#">Join Us!</a></li>
+							</ul>
+
+							<div class="clearer">&nbsp;</div>
+
+						</div>
+
+						<div class="clearer">&nbsp;</div>
+
+					</div>
+
+				</div>
+
+				<div id="splash">
+
+					<ul class="sortable-list" id="splash-list"></ul>
+
+					<div class="clearer">&nbsp;</div>
+
+				</div>
+
+				<div class="main" id="main-two-columns">
+
+					<div class="left" id="main-content">
+
+						<div class="section">
+
+							<div class="section-title">Blog</div>
+
+							<div class="section-content">
+
+								<div class="post">
+
+									<div class="post-title"><h2><a href="#">Template Information</a></h2></div>
+
+									<div class="post-date">Saturday, September 19, 2009 by Viktor Persson</div>
+
+									<div class="post-body">
+
+										<p><a href="#"><img src="img/sample-image.jpg" alt="" class="bordered" /></a></p>
+
+										<p class="large">This is a free website template by <a href="http://arcsin.se/">Arcsin</a>, built using tableless XHTML and CSS.</p>
+													
+										<p>This template is distributed under a <a href="http://templates.arcsin.se/license/">Creative Commons Attribution 2.5 License</a>, which allows you to use and modify it for any purpose (personal and commercial), under the condition that you keep the provided credit links in the footer.</p>
+
+										<p>The latest template version and CMS conversions for platforms such as WordPress and Blogger can be found at the official <a href="http://templates.arcsin.se/simple-organization-website-template/">Simple Organization Website Template</a> page.</p>
+
+										<p>For more templates, questions and comments please visit <a href="http://templates.arcsin.se/">Arcsin Web Templates</a>.</p>
+
+										<a href="http://templates.arcsin.se/" class="more">Read more &#187;</a>
+
+									</div>
+								
+								</div>
+
+								<div class="content-separator"></div>
+
+								<div class="col3 left">
+									<div class="column-content">
+
+										<div class="post">
+											<h3><a href="#">Article title</a></h3>
+											<p>Integer diam elit, condi mentum ac semper ut, tincidunt non diam. Ut congue at commodo aenean euismod tincidunt lorem euismod.</p>
+											<a href="#" class="more">Read more &#187;</a>
+										</div>
+
+									</div>
+								</div>
+
+								<div class="col3 col3-mid left">
+									<div class="column-content">
+
+										<div class="post">
+											<h3><a href="#">Second Article Title</a></h3>
+											<p>Sed congue lacinia leo, sed dignissim odio pharetra vel. Fusce a dignissim dui. Fusce semper porttitor enim dapibus venenatis.</p>
+											<a href="#" class="more">Read more &#187;</a>
+										</div>
+
+									</div>
+								</div>
+
+								<div class="col3 right">
+									<div class="column-content">
+
+										<div class="post">
+											<h3><a href="#">Third title</a></h3>
+											<p>Sed auctor hendrerit eros eu eleifend. Cras hendrerit iaculis sodales. Pellentesque interdum rhoncus magna.</p>
+											<a href="#" class="more">Read more &#187;</a>
+										</div>
+
+									</div>
+								</div>
+
+								<div class="clearer">&nbsp;</div>
+
+							</div>
+
+						</div>
+
+						<div class="clearer">&nbsp;</div>
+						
+					</div>
+
+					<div class="right sidebar" id="sidebar">
+
+						<ul class="sortable-list" id="sidebar-list"></ul>
+
+					</div>
+
+					<div class="clearer">&nbsp;</div>
+
+				</div>
+
+				<div id="footer">
+
+					<div class="left" id="footer-left">
+						
+						<img src="img/logo-small.gif" alt="" class="left" />
+						
+						<p>&copy; 2002-2009 Simple Organization. All rights Reserved</p>
+
+						<p class="quiet"><a href="http://templates.arcsin.se/">Website template</a> by <a href="http://arcsin.se/">Arcsin</a></p>
+						
+						<div class="clearer">&nbsp;</div>
+
+					</div>
+
+					<div class="right" id="footer-right">
+
+						<p class="large"><a href="#">Blog</a> <span class="text-separator">|</span> <a href="#">Events</a> <span class="text-separator">|</span> <a href="#">About</a> <span class="text-separator">|</span> <a href="#">Archives</a> <span class="text-separator">|</span> <strong><a href="#">Join Us!</a></strong> <span class="text-separator">|</span> <a href="#top" class="quiet">Page Top &uarr;</a></p>
+
+					</div>
+
+					<div class="clearer">&nbsp;</div>
+
+				</div>
+
+			</div>
+
+				
+			<!-- END: XHTML for example 3 -->
+
+		</div>
+	</div>
+
+</div>
+
+<!-- Example JavaScript files -->
+<script type="text/javascript" src="jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="jquery-ui-1.8.custom.min.js"></script>
+<script type="text/javascript" src="jquery.cookie.js"></script>
+
+<!-- Example jQuery code (JavaScript)  -->
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+	// Get items
+	function getItems(id)
+	{
+		return $('#' + id + '-list').sortable('toArray').join(',');
+	}
+
+	// Load items from cookie
+	function loadItemsFromCookie(name)
+	{
+		if ( $.cookie(name) != null )
+		{
+			renderItems($.cookie(name));
+		}
+		else
+		{
+			alert('Cookie "' + name + '" is not set');
+		}
+	}
+
+	// Render items
+	function renderItems(id, itemStr)
+	{
+		var list = $('#' + id + '-list');
+		var items = itemStr.split(',')
+
+		for ( var i in items )
+		{
+			html = '<li class="sortable-item';
+
+			if ( id == 'splash' )
+			{
+				html += ' col3 left';
+			}
+			html += '" id="' + items[i] + '"><div class="loader"></div></li>';
+
+			list.append(html);
+
+			// Load html file
+			$('#' + items[i]).load('content/' + items[i] + '.html');
+		}	
+	}
+
+	// Load items from cookie or defaults
+	var defaults = [];
+	
+	defaults['splash'] = 'mission,event,follow';
+	defaults['sidebar'] = 'search,entries,board,topics';
+
+	var splashSource = ( $.cookie('splash-cookie') == null ) ? defaults['splash'] : $.cookie('splash-cookie');
+	renderItems('splash', splashSource);
+
+	var sidebarSource = ( $.cookie('sidebar-cookie') == null ) ? defaults['sidebar'] : $.cookie('sidebar-cookie');
+	renderItems('sidebar', sidebarSource);
+	
+
+	// Splash (top)
+	$('#splash .sortable-list').sortable({
+		axis: 'x',
+		forceHelperSize: true,
+		forcePlaceholderSize: true,
+		handle: '.label',
+		opacity: 0.8,
+		placeholder: 'placeholder',
+		update: function(){
+			$.cookie('splash-cookie', getItems('splash'));
+		}
+	});
+
+	// Sidebar
+	$('#sidebar .sortable-list').sortable({
+		axis: 'y',
+		containment: 'parent',
+		forceHelperSize: true,
+		forcePlaceholderSize: true,
+		handle: '.section-title',
+		opacity: 0.8,
+		placeholder: 'placeholder',
+		update: function(){
+			$.cookie('sidebar-cookie', getItems('sidebar'));
+		}
+	});
+
+});
+
+</script>
+
+</body>
+</html>

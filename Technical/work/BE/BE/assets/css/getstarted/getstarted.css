@@ -1,0 +1,199 @@
+/*
+<div class="ctr-gs-main">
+	<div class="ctr-gs-left">
+		<div class="ctr-gs-frm">
+			<div id="gs-frm-prev" class="ctr-gs-frm-prev"></div>
+			<div id="gs-frm-current" class="ctr-gs-frm-current"></div>
+			<div id="gs-frm-next" class="ctr-gs-frm-next"></div>
+		</div>
+		<div id="gs-btns" class="ctr-gs-btns"></div>
+	</div>
+	<div class="ctr-gs-right">
+		<div id="gs-dyk-next" class="ctr-gs-dyk-next"></div>
+		<div id="gs-dyk-current" class="ctr-gs-dyk-current"></div>
+	</div>
+</div>
+*/
+
+div.ctr-gs-main
+{
+	width:738px;
+	height:416px;
+	margin:0px;
+	padding:0px;
+}
+
+	div.ctr-gs-left
+	{
+		width:50%;
+		float:left;
+		height:416px;
+	}
+
+		div.ctr-gs-frm
+		{
+			height:386px;
+			overflow: hidden;
+			width:100%;
+			position:relative;
+		}
+			
+			div.ctr-gs-frm-prev,
+			div.ctr-gs-frm-current,
+			div.ctr-gs-frm-next
+			{
+				position:absolute;
+				left:0px;
+				height:386px;
+				width:100%;
+			}
+			
+			/*starting positions*/
+			div.ctr-gs-frm-prev{ top:-388px; z-index:19500; }
+			div.ctr-gs-frm-current{ top:0px; z-index:20000; }
+			div.ctr-gs-frm-next{ top:388px; z-index:20500; }
+			
+				div.frm-item
+				{
+					padding:4px;
+					padding-right:0px;
+					height:100%;
+					background-color: #DFE8F6;
+				}
+				
+					div.frm-item .frm-container
+					{
+						border:1px solid #99BBE8;
+						height:100%;
+					}
+					
+						div.frm-item h1
+						{
+							background-color: #99BBE8;
+							color: #04468C;
+							padding:4px;
+							margin:0px;
+							font-size:16pt;
+							font-weight:bold;
+							border-bottom:5px solid #BCD2EF;
+						}
+						
+						div.frm-item .frm-content
+						{
+							padding:4px;
+						}
+						
+							div.frm-content p
+							{
+								font-family: "Arial";
+								font-size: 9pt;
+								margin-bottom:10px;
+							}
+							
+							div.frm-content p.warning
+							{
+								font-size: 8pt;
+								margin-bottom:10px;
+								padding:2px;
+								background-color: #FDCF43;
+							    border-color: #DA8902;
+							    border-style: solid none;
+							    border-width: 2px medium;
+							}
+							
+							div.frm-content p.info
+							{
+								font-size: 8pt;
+								margin-bottom:10px;
+								padding:2px;
+								background-color: #BCD2EF;
+							    border-color: #99BBE8;
+							    border-style: solid none;
+							    border-width: 2px medium;
+							}
+							
+							div.frm-content textarea
+							{
+								width:100%;
+								height:250px;
+								font-family: "Arial";
+								font-size: 9px;
+								text-align: justify;
+							}
+							
+							div.frm-content ul
+							{
+								margin-left:10px;
+							}
+							
+							div.frm-content ul li
+							{
+								margin-left:15px;
+								margin-bottom:2px;
+								list-style:disc;
+							}
+			
+		div.ctr-gs-btns
+		{
+			height:30px;
+			width:100%;
+			padding:4px;
+			padding-top:0px;
+			padding-right:0px;
+			background-color: #DFE8F6;
+		}
+			
+			div.ctr-gs-btns div.btn-container
+			{
+				height:100%;
+			}
+			
+				div.ctr-gs-btns div.btn-container div.btn-content
+				{
+					padding:1px;
+					float:right;
+				}
+				
+					div.ctr-gs-btns div.btn-container div.gs-btn
+					{
+						margin-left:1px;
+						float:left;
+					}
+
+	div.ctr-gs-right
+	{
+		width:50%;
+		float:right;
+		height:416px;
+		position:relative;
+	}
+
+		div.ctr-gs-dyk-next
+		{
+			position:absolute;
+			left:0px;
+			top:0px;
+			z-index:19500;
+			width:100%;
+			height:100%;
+		}
+		
+		div.ctr-gs-dyk-current
+		{
+			position:absolute;
+			left:0px;
+			top:0px;
+			z-index:20000;
+			width:100%;
+			height:100%;
+		}
+		
+			div.dyk-item
+			{
+				padding:4px;
+			}
+			
+				div.dyk-item .dyk-img
+				{
+					border:1px solid #99BBE8;
+				}

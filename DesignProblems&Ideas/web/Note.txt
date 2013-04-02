@@ -1,0 +1,25 @@
+@{ Html.RenderAction("partialview","home");} <!--gets to action-->
+
+[ChildActionOnly] //only respond to html.renderAction
+        public PartialViewResult partialview() //  (renderAction ,partialview ) combination
+        {
+            return PartialView("error/error_bottom");
+        }
+
+--------------------
+using MvcContrib.Pagination;
+ var data1 = ctx.test
+                        .OrderByDescending(t => t.name)
+                        .OrderBy(p => p.testreviews.Average(tr => tr.rate))
+                        .AsPagination(page, 5)
+                        .Select(t => new view1()
+                        {
+                            id=t.id,
+                            name=t.name,
+                            avgrate=t.testreviews.Average(tr=>tr.rate)
+                        });
+----------------------
+use @Html.Encode(proc.ProcessName) for entries
+----------------
+.table1 td input[type=submit]{}
+--------------------

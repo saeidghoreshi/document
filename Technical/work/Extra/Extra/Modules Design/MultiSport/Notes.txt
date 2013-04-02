@@ -1,0 +1,41 @@
+website perspective : 
+Domain name with different choosable layout based on country/sport
+
+DB and serverside structure perspective : 
+
+1-define Sprot
+
+2-build rootlevel auhority like Confedration for selected sprot
+e.g. FIFA(soccer) FIBA (basketball)
+
+3-recursive assignment of entites to eachother with type-definition 
+ad build views for each different type for future database join relations
+
+4-[special]menu  structure template based on country/sport which reflects organization By-Law 
+this templated depend on future database structre change which may or my not felexible, can be built Dynamic or static
+
+
+
+UI Screen:
+sport definition
+entity org hirerachy builder [can be splitted by type in different screens]
+main sport selection panel at startup 
+show application layout based on selected sport and difinitly 
+loadidng diffent [special]menu structure template build for different Country/sport 
+
+
+
+
+FileDirectory structure perspective : 
+
+file-directory for image objects and classified based on sport-Entities(recursive)
+direct assignment of image objectid to each entity
+having compiled DataBase view to retrieve recursive entity relationship asap
+e.g. divisions hierarchy or entity hierarch etc.
+
+
+
+
+
+0223 - 13:35
+

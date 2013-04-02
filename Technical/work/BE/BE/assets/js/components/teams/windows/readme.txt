@@ -1,0 +1,1 @@
+Windows that extend the spectrumwindow class specific to teams

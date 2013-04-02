@@ -1,0 +1,2 @@
+var x=$get("select1");
+x.add(new option(x,x));

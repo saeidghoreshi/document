@@ -1,0 +1,328 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>jQuery Widget Organizational Chart Huge Number of Direct Reports Demo</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<script type="text/javascript" src="demo/bootstrap/jquery-ui.core/js/jquery-1.8.2.js"></script>
+	<script type="text/javascript" src="demo/bootstrap/jquery-ui.core/js/jquery-ui-1.9.1.custom.js"></script>
+	<link rel="stylesheet" type="text/css" href="demo/bootstrap/jquery-ui.core/css/no-theme/jquery-ui-1.9.1.custom.min.css" />
+
+	<!-- jQuery UI Layout -->
+	<script type="text/javascript" src="demo/jquerylayout/jquery.layout-latest.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="demo/jquerylayout/layout-default-latest.css" />
+
+	<!-- CSS Drop Down Menu -->
+	<link href="demo/css/dropdown/dropdown.css" media="screen" rel="stylesheet" type="text/css" />
+	<link href="demo/css/dropdown/themes/default/default.ultimate.css" media="screen" rel="stylesheet" type="text/css" />
+
+	<script type="text/javascript">
+		jQuery(document).ready(function () {
+			jQuery('body').layout(
+			{
+				center__paneSelector: "#contentpanel"
+				, north__paneSelector: "#northpanel"
+				, north__resizable: false
+				, north__closable: false
+				, north__spacing_open: 0
+				, north__size: 40
+			});
+		});
+	</script>
+
+
+	<!-- header -->
+
+	<link rel="stylesheet" type="text/css" href="demo/bootstrap/css/bootstrap.min.css" />
+	<script type="text/javascript" src="demo/bootstrap/js/bootstrap.js"></script>
+	<link rel="stylesheet" type="text/css" href="demo/bootstrap/css/bootstrap-responsive.min.css" />
+
+	<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+	<!-- # include file="src/src.primitives.html"-->
+
+	<link href="demo/css/primitives.latest.css?1029" media="screen" rel="stylesheet" type="text/css" />
+	<script  type="text/javascript" src="demo/js/primitives.min.js?1029"></script>
+
+	<script type="text/javascript">
+		var orgDiagram = null;
+		var treeItems = {};
+		var contextidcounter = 0;
+		var currentHighlightDataTreeItem = null;
+		var currentCursorDataTreeItem = null;
+
+		jQuery(document).ready(function () {
+			jQuery.ajaxSetup({
+				cache: false
+			});
+
+			jQuery('#contentpanel').layout(
+			{
+				center__paneSelector: "#centerpanel"
+				, south__paneSelector: "#southpanel"
+				, south__resizable: false
+				, south__closable: false
+				, south__spacing_open: 0
+				, south__size: 50
+				, west__size: 200
+				, west__paneSelector: "#westpanel"
+				, west__resizable: true
+				, center__onresize: function () {
+					if (orgDiagram != null) {
+						jQuery("#centerpanel").orgDiagram("update", primitives.orgdiagram.UpdateMode.Refresh);
+					}
+				}
+			});
+
+			orgDiagram = Setup(jQuery("#centerpanel"));
+
+			LoadItems(jQuery("#centerpanel"));
+		});
+
+		function Setup(selector) {
+			var config = GetOrgDiagramConfig();
+			config.templates = [getCursorTemplate()];
+			return selector.orgDiagram(config);
+		}
+
+		function Update(selector, updateMode) {
+			selector.orgDiagram("option", GetOrgDiagramConfig());
+			selector.orgDiagram("update", updateMode);
+		}
+
+		function GetOrgDiagramConfig() {
+
+			return {
+				normalLevelShift: 20,
+				dotLevelShift: 10,
+				lineLevelShift: 10,
+				normalItemsInterval: 20,
+				dotItemsInterval: 10,
+				lineItemsInterval: 5,
+				hasSelectorCheckbox: primitives.common.Enabled.True,
+				leavesPlacementType: primitives.orgdiagram.ChildrenPlacementType.Matrix,
+				hasButtons: primitives.common.Enabled.False,
+				onMouseClick: onMouseClick,
+				onCursorChanging: onCursorChanging,
+				onCursorChanged: onCursorChanged,
+				onHighlightChanging: onHighlightChanging,
+				onHighlightChanged: onHighlightChanged,
+				onSelectionChanged: onSelectionChanged,
+				itemTitleFirstFontColor: primitives.common.Colors.White,
+				itemTitleSecondFontColor: primitives.common.Colors.White
+			};
+		}
+
+		function getCursorTemplate() {
+			var result = new primitives.orgdiagram.TemplateConfig();
+			result.name = "CursorTemplate";
+
+			result.itemSize = new primitives.common.Size(120, 100);
+			result.minimizedItemSize = new primitives.common.Size(3, 3);
+			result.highlightPadding = new primitives.common.Thickness(2, 2, 2, 2);
+			result.cursorPadding = new primitives.common.Thickness(3, 3, 50, 8);
+
+			var cursorTemplate = jQuery("<div></div>")
+			.css({
+				position: "absolute",
+				overflow: "hidden",
+				width: (result.itemSize.width + result.cursorPadding.left + result.cursorPadding.right) + "px",
+				height: (result.itemSize.height + result.cursorPadding.top + result.cursorPadding.bottom) + "px"
+			});
+
+			var cursorBorder = jQuery("<div></div>")
+			.css({
+				width: (result.itemSize.width + result.cursorPadding.left + 1) + "px",
+				height: (result.itemSize.height + result.cursorPadding.top + 1) + "px"
+			}).addClass("bp-item bp-corner-all bp-cursor-frame");
+			cursorTemplate.append(cursorBorder);
+
+			var bootStrapVerticalButtonsGroup = jQuery("<div></div>")
+			.css({
+				position: "absolute",
+				overflow: "hidden",
+				top: result.cursorPadding.top + "px",
+				left: (result.itemSize.width + result.cursorPadding.left + 10) + "px",
+				width: "35px",
+				height: (result.itemSize.height + 1) + "px"
+			}).addClass("btn-group btn-group-vertical");
+
+			bootStrapVerticalButtonsGroup.append('<button class="btn btn-small" data-buttonname="info" type="button"><i class="icon-info-sign"></i></button>');
+			bootStrapVerticalButtonsGroup.append('<button class="btn btn-small" data-buttonname="edit" type="button"><i class="icon-edit"></i></button>');
+			bootStrapVerticalButtonsGroup.append('<button class="btn btn-small" data-buttonname="remove" type="button"><i class="icon-remove"></i></button>');
+			bootStrapVerticalButtonsGroup.append('<button class="btn btn-small" data-buttonname="user" type="button"><i class="icon-user"></i></button>');
+
+			cursorTemplate.append(bootStrapVerticalButtonsGroup);
+
+			result.cursorTemplate = cursorTemplate.wrap('<div>').parent().html();
+
+			return result;
+		}
+
+		function onSelectionChanged(e, data) {
+			var selectedItems = jQuery("#centerpanel").orgDiagram("option", "selectedItems");
+			var message = "";
+			for (var index = 0; index < selectedItems.length; index += 1) {
+				var itemConfig = selectedItems[index];
+				if (message != "") {
+					message += ", ";
+				}
+				message += "<b>'" + itemConfig.title + "'</b>";
+			}
+			message += (data.parentItem != null ? " Parent item <b>'" + data.parentItem.title + "'</b>" : "");
+			jQuery("#southpanel").empty().append("User selected next items: " + message);
+		}
+
+		function onHighlightChanging(e, data) {
+			var message = (data.context != null) ? "User is hovering mouse over item <b>'" + data.context.title + "'</b>." : "";
+			message += (data.parentItem != null ? " Parent item <b>'" + data.parentItem.title + "'</b>" : "");
+
+			jQuery("#southpanel").empty().append(message);
+		}
+
+		function onHighlightChanged(e, data) {
+			var message = (data.context != null) ? "User hovers mouse over item <b>'" + data.context.title + "'</b>." : "";
+			message += (data.parentItem != null ? " Parent item <b>'" + data.parentItem.title + "'</b>" : "");
+
+			jQuery("#southpanel").empty().append(message);
+		}
+
+		function onCursorChanging(e, data) {
+			var message = "User is clicking on item '" + data.context.title + "'." +
+			    (data.parentItem != null ? (" Parent item <b>'" + data.parentItem.title + "'</b>") : "");
+
+			jQuery("#southpanel").empty().append(message);
+		}
+
+		function onCursorChanged(e, data) {
+			var message = "User clicked on item '" + data.context.title + "'." +
+			    (data.parentItem != null ? (" Parent item <b>'" + data.parentItem.title + "'</b>") : "");
+			jQuery("#southpanel").empty().append(message);
+		}
+
+		function onMouseClick(event, data) {
+			var target = jQuery(event.originalEvent.target);
+			if (target.hasClass("btn") || target.parent(".btn").length > 0) {
+				var button = target.hasClass("btn") ? target : target.parent(".btn");
+				var buttonname = button.data("buttonname");
+
+				var message = "User clicked <b>'" + buttonname + "'</b> button for item <b>'" + data.context.title + "'</b>." +
+				    (data.parentItem != null ? (" Parent item <b>'" + data.parentItem.title + "'</b>" ): "");
+				jQuery("#southpanel").empty().append(message);
+
+				data.cancel = true;
+			}
+		}
+
+		function LoadItems(selector) {
+
+			var rootItem = new primitives.orgdiagram.ItemConfig("Title A", "Description A", "http://www.basicprimitives.com/demo/images/photos/a.png");
+			rootItem.templateName = "CursorTemplate";
+
+			var adviser1 = new primitives.orgdiagram.ItemConfig("Adviser 1", "Adviser Description", "http://www.basicprimitives.com/demo/images/photos/z.png");
+			adviser1.itemType = primitives.orgdiagram.ItemType.Adviser;
+			adviser1.adviserPlacementType = primitives.orgdiagram.AdviserPlacementType.Right;
+			adviser1.groupTitle = "Audit";
+			adviser1.templateName = "CursorTemplate";
+			rootItem.items.push(adviser1);
+
+			var adviser2 = new primitives.orgdiagram.ItemConfig("Adviser 2", "Adviser Description", "http://www.basicprimitives.com/demo/images/photos/z.png");
+			adviser2.itemType = primitives.orgdiagram.ItemType.Adviser;
+			adviser2.adviserPlacementType = primitives.orgdiagram.AdviserPlacementType.Left;
+			adviser2.groupTitle = "Contract";
+			adviser2.templateName = "CursorTemplate";
+			rootItem.items.push(adviser2);
+
+			var Assistant1 = new primitives.orgdiagram.ItemConfig("Assistant 1", "Assitant Description", "http://www.basicprimitives.com/demo/images/photos/y.png");
+			Assistant1.itemType = primitives.orgdiagram.ItemType.Assistant;
+			Assistant1.adviserPlacementType = primitives.orgdiagram.AdviserPlacementType.Right;
+			Assistant1.groupTitle = "Audit";
+			Assistant1.templateName = "CursorTemplate";
+			rootItem.items.push(Assistant1);
+
+			var itemC = new primitives.orgdiagram.ItemConfig("Title C", "Description C", "http://www.basicprimitives.com/demo/images/photos/c.png");
+			itemC.templateName = "CursorTemplate";
+			rootItem.items.push(itemC);
+			for (var index = 0; index < 49; index += 1) {
+				var itemD = new primitives.orgdiagram.ItemConfig(index.toString() + " Left", index.toString() + " Description", "http://www.basicprimitives.com/demo/images/photos/c.png");
+				itemD.templateName = "CursorTemplate";
+				itemC.items.push(itemD);
+			}
+
+			var itemC1 = new primitives.orgdiagram.ItemConfig("Title D", "Description D", "http://www.basicprimitives.com/demo/images/photos/d.png");
+			itemC1.templateName = "CursorTemplate";
+			rootItem.items.push(itemC1);
+			for (var index = 0; index < 67; index += 1) {
+				var itemD = new primitives.orgdiagram.ItemConfig(index.toString() + " Center", index.toString() + " Description", "http://www.basicprimitives.com/demo/images/photos/d.png");
+				itemD.templateName = "CursorTemplate";
+				itemC1.items.push(itemD);
+			}
+
+			var itemD1 = new primitives.orgdiagram.ItemConfig("Manager E", "Description E", "http://www.basicprimitives.com/demo/images/photos/e.png");
+			itemD1.templateName = "CursorTemplate";
+			rootItem.items.push(itemD1);
+			for (var index = 0; index < 57; index += 1) {
+				var item = new primitives.orgdiagram.ItemConfig(index.toString() + " Euro", index.toString() + " Description", "http://www.basicprimitives.com/demo/images/photos/e.png");
+				item.templateName = "CursorTemplate";
+				itemD1.items.push(item);
+			}
+
+			var itemDV = new primitives.orgdiagram.ItemConfig("Manager V", "Description V", "http://www.basicprimitives.com/demo/images/photos/v.png");
+			itemDV.templateName = "CursorTemplate";
+			rootItem.items.push(itemDV);
+			for (var index = 0; index < 37; index += 1) {
+				var item = new primitives.orgdiagram.ItemConfig(index.toString() + " Vector", index.toString() + " Description", "http://www.basicprimitives.com/demo/images/photos/v.png");
+				item.templateName = "CursorTemplate";
+				itemDV.items.push(item);
+			}
+
+			selector.orgDiagram("option", {
+				rootItem: rootItem,
+				cursorItem: rootItem
+			});
+			selector.orgDiagram("update");
+		}
+	</script>
+	<!-- /header -->
+</head>
+<body style="font-size:12px">
+	<div id="contentpanel" style="padding: 0px;">
+		<!--bpcontent-->
+		<div id="westpanel" style="padding: 0px; margin: 0px; border-style: solid; font-size: 12px; border-color: grey; border-width: 1px; overflow: scroll;">
+			<h2>Organizational Chart Bootstrap Demo</h2>
+			<p>This example demonstrates how to create Bootstrap buttons group in cursor template.</p>
+			<p>
+				Basic Primitives organizational chart depends on jQuery UI, but bootstrap redefines all its widgets and their implementation is not compatible with jQuery UI, so in order to implement user buttons for cursor item in chart, we have to do next steps: 
+			   <ul>
+				<li>Make custom build of jQuery UI having only core section inside.</li>
+				<li>Don't use buttons collection option of organizational chart.</li>
+				<li>Create custom cursor or item template and add bootstrap buttons group to it.</li>
+				<li>Make event handler for onMouseClick event.</li>
+			   </ul>
+		</div>
+		<div id="centerpanel" style="overflow: hidden; padding: 0px; margin: 0px; border: 0px;">
+		</div>
+		<div id="southpanel">
+		</div>
+		<!--/bpcontent-->
+	</div>
+	<div id="northpanel" style="padding: 0px; margin: 0px;">
+		<ul id="nav" class="dropdown dropdown-horizontal">
+			<li><a href="index.html">Navigation</a></li>
+            <li><a href="orientation.html">Chart Orientation</a></li>
+			<li><a href="crossteamgroup.html">Cross Team Group</a></li>
+			<li><a href="verticallayout.html">Vertical Children Layout</a></li>
+			<li><a href="directreports40.html">Chart Editor</a></li>
+			<li><a href="resize.html">Misc</a></li>
+			<li><a href="bootstrap.html">Bootstrap</a></li>
+			<li><a href="phpdemo.php">PHP Demo</a></li>
+			<li><a href="text.html">Text</a></li>
+			<li><a href="callout.html">Callout</a></li>
+		</ul>
+	</div>
+</body>
+</html>

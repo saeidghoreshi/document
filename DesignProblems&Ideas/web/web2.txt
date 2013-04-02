@@ -1,0 +1,29 @@
+border #C6C6C6 #aaa #ccc
+border gainsboro
+bg #eee
+
+
+for dark theme
+bgcontainer #262626
+bg 444
+border 555
+font 62.5% 'Lucida Grande', Verdana, Arial, Sans-Serif
+
+
+@{
+    Layout = "~/Views/Shared/Master.cshtml";
+    ViewBag.partialHeader = RenderPage("../home/header/index1PartialHeader.cshtml");
+}
+
+@RenderBody()
+
+     
+======
+public ActionResult IndexFooter()
+        {
+            return PartialView("IndexFooter");
+        }  
+
+ @{/*Html.RenderAction("IndexFooter","home");*/}
+
+esri[dojo] not compatible with prototype

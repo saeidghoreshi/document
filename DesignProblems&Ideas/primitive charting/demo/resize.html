@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Resize Example</title>
+	<script type="text/javascript" src="demo/js/jquery/jquery-1.7.2.js"></script>
+	<script type="text/javascript" src="demo/js/jquery/jquery-ui-1.8.16.custom.min.js"></script>
+	<link href="demo/js/jquery/ui-lightness/jquery-ui-1.8.16.custom.css" media="screen" rel="stylesheet" type="text/css" />
+
+	<!-- jQuery UI Layout -->
+	<script type="text/javascript" src="demo/jquerylayout/jquery.layout-latest.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="demo/jquerylayout/layout-default-latest.css" />
+
+	<!-- CSS Drop Down Menu -->
+	<link href="demo/css/dropdown/dropdown.css" media="screen" rel="stylesheet" type="text/css" />
+	<link href="demo/css/dropdown/themes/default/default.ultimate.css" media="screen" rel="stylesheet" type="text/css" />
+
+
+	<!-- # include file="src/src.primitives.html"-->
+
+	<link href="demo/css/primitives.latest.css?1029" media="screen" rel="stylesheet" type="text/css" />
+	<script  type="text/javascript" src="demo/js/primitives.min.js?1029"></script>
+
+
+	<script type="text/javascript">
+
+		var m_timer = null;
+
+		jQuery(document).ready(function () {
+			ResizePlaceholder();
+			SetupWidget();
+			$(window).resize(function () {
+
+				onWindowResize();
+
+			});
+
+		});
+
+		function onWindowResize() {
+			if (m_timer == null) {
+				m_timer = window.setTimeout(function () {
+					ResizePlaceholder();
+					jQuery("#orgdiagram").orgDiagram("update", primitives.orgdiagram.UpdateMode.Refresh)
+					window.clearTimeout(m_timer);
+					m_timer = null;
+				}, 300);
+			}
+		}
+
+
+
+		function SetupWidget() {
+			var options = new primitives.orgdiagram.Config();
+
+			var rootItem = new primitives.orgdiagram.ItemConfig("Title A", "Description A", "http://www.basicprimitives.com/demo/images/photos/a.png");
+
+
+			var assitant1 = new primitives.orgdiagram.ItemConfig("Assistant 1", "Assistant Description", "http://www.basicprimitives.com/demo/images/photos/a.png");
+			assitant1.itemType = primitives.orgdiagram.ItemType.Assistant;
+			assitant1.adviserPlacementType = primitives.orgdiagram.AdviserPlacementType.Right;
+			assitant1.groupTitle = "Audit";
+			rootItem.items.push(assitant1);
+
+			var assitant2 = new primitives.orgdiagram.ItemConfig("Assistant 2", "Assistant Description", "http://www.basicprimitives.com/demo/images/photos/b.png");
+			assitant2.itemType = primitives.orgdiagram.ItemType.Assistant;
+			assitant2.adviserPlacementType = primitives.orgdiagram.AdviserPlacementType.Left;
+			assitant2.groupTitle = "Audit";
+			rootItem.items.push(assitant2);
+
+			for (var index = 0; index < 4; index += 1) {
+			    var subAdviser1 = new primitives.orgdiagram.ItemConfig("Sub Adviser", "Sub Adviser Description", "http://www.basicprimitives.com/demo/images/photos/s.png");
+			    subAdviser1.itemType = primitives.orgdiagram.ItemType.SubAdviser;
+			    subAdviser1.adviserPlacementType = primitives.orgdiagram.AdviserPlacementType.Left;
+			    subAdviser1.groupTitle = "Sub Adviser";
+			    assitant1.items.push(subAdviser1);
+			    var subAdviser1 = new primitives.orgdiagram.ItemConfig("Sub Adviser", "Sub Adviser Description", "http://www.basicprimitives.com/demo/images/photos/s.png");
+			    subAdviser1.itemType = primitives.orgdiagram.ItemType.SubAdviser;
+			    subAdviser1.adviserPlacementType = primitives.orgdiagram.AdviserPlacementType.Right;
+			    subAdviser1.groupTitle = "Sub Adviser";
+			    assitant2.items.push(subAdviser1);
+			}
+
+			var aggregator = new primitives.orgdiagram.ItemConfig("Aggregator", "Invisible aggregator", "");
+			aggregator.isVisible = false;
+			aggregator.childrenPlacementType = primitives.orgdiagram.ChildrenPlacementType.Horizontal;
+			rootItem.items.push(aggregator);
+
+			var assitant1 = new primitives.orgdiagram.ItemConfig("Assistant 3", "Assistant Description", "http://www.basicprimitives.com/demo/images/photos/c.png");
+			assitant1.itemType = primitives.orgdiagram.ItemType.Assistant;
+			assitant1.adviserPlacementType = primitives.orgdiagram.AdviserPlacementType.Right;
+			assitant1.groupTitle = "Audit";
+			aggregator.items.push(assitant1);
+
+			var assitant1 = new primitives.orgdiagram.ItemConfig("Assistant 4", "Assistant Description", "http://www.basicprimitives.com/demo/images/photos/d.png");
+			assitant1.itemType = primitives.orgdiagram.ItemType.Assistant;
+			assitant1.adviserPlacementType = primitives.orgdiagram.AdviserPlacementType.Left;
+			assitant1.groupTitle = "Audit";
+			aggregator.items.push(assitant1);
+
+		    for (var index = 0; index < 6; index += 1) {
+		        var itemD = new primitives.orgdiagram.ItemConfig(index.toString() + " Full Time", index.toString() + " Description", "http://www.basicprimitives.com/demo/images/photos/f.png");
+		        itemD.groupTitle = "Full Time";
+		    	aggregator.items.push(itemD);
+		    }
+
+		    var aggregator2 = new primitives.orgdiagram.ItemConfig("Aggregator", "Invisible aggregator", "");
+		    aggregator2.isVisible = false;
+		    aggregator2.childrenPlacementType = primitives.orgdiagram.ChildrenPlacementType.Matrix;
+		    aggregator.items.splice(2 + 3, 0, aggregator2);
+
+		    for (var index = 0; index < 12; index += 1) {
+		        var itemD = new primitives.orgdiagram.ItemConfig(index.toString() + " Part Time", index.toString() + " Description", "http://www.basicprimitives.com/demo/images/photos/f.png");
+		        itemD.groupTitle = "Part Time";
+		        aggregator2.items.push(itemD);
+		    }
+
+		    options.rootItem = rootItem;
+		    options.cursorItem = rootItem;
+			options.normalLevelShift = 20;
+			options.dotLevelShift = 10;
+			options.lineLevelShift = 10;
+			options.normalItemsInterval = 20;
+			options.dotItemsInterval = 10;
+			options.lineItemsInterval = 5;
+			options.buttonsPanelSize = 48;
+
+			options.pageFitMode = primitives.orgdiagram.PageFitMode.Auto;
+			options.graphicsType = primitives.common.GraphicsType.Auto;
+			options.hasSelectorCheckbox = primitives.common.Enabled.True;
+			options.hasButtons = primitives.common.Enabled.True;
+			options.leavesPlacementType = primitives.orgdiagram.ChildrenPlacementType.Matrix;
+
+			jQuery("#orgdiagram").orgDiagram(options);
+		}
+
+		function ResizePlaceholder() {
+			var bodyWidth = $(window).width() - 40
+			var bodyHeight = $(window).height() - 40
+			var titleHeight = 40;
+			jQuery("#menu").css(
+			{
+				"width": bodyWidth + "px",
+				"height": titleHeight + "px"
+			});
+
+			jQuery("#orgdiagram").css(
+			{
+				"width": bodyWidth + "px",
+				"height": (bodyHeight - titleHeight) + "px",
+				"top": titleHeight + "px"
+			});
+		}
+	</script>
+</head>
+<body style="padding: 0; margin: 0; font-size:12px">
+	<div id="menu" style="width: 640px; height: 45px; padding: 0px; margin: 0px; overflow: hidden;">
+		<ul id="nav" class="dropdown dropdown-horizontal">
+			<li><a href="index.html">Navigation</a></li>
+            <li><a href="orientation.html">Chart Orientation</a></li>
+			<li><a href="crossteamgroup.html">Cross Team Group</a></li>
+			<li><a href="verticallayout.html">Vertical Children Layout</a></li>
+			<li><a href="directreports40.html">Chart Editor</a></li>
+			<li><a href="resize.html">Misc</a></li>
+			<li><a href="bootstrap.html">Bootstrap</a></li>
+			<li><a href="phpdemo.php">PHP Demo</a></li>
+			<li><a href="text.html">Text</a></li>
+			<li><a href="callout.html">Callout</a></li>
+		</ul>
+	</div>
+	<div id="orgdiagram" style="position: absolute; overflow: hidden; left: 0px; padding: 0px; margin: 0px; border-style: solid; border-color: navy; border-width: 1px;"></div>
+</body>
+</html>
