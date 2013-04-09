@@ -1,0 +1,17 @@
+﻿add reference to 
+1-the wcf library [always]
+2-service model
+3-sericeModel.Web
+
+define Host
+add Installer
+then in vs command promp switch to the directory, use installutil exe file
+
+Note : 
+	define contracts in different project
+Note:
+	add  System.serviceModel.web by selecting  .NET 4 instead of .NET 4 Client
+
+
+
+

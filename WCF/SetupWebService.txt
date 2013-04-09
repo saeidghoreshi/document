@@ -1,3 +1,5 @@
+ENABLE REQUIRED SERVICES IN PROGRAMS SECTION
+
 Create Library
 1-create wcf service library and clenup
 2-create .cs file and define the application logic including class[datacontract], Interface[servicecontract] and implementation
